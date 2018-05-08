@@ -1,1 +1,0 @@
-ALTER TABLE fac_orders AUTO_INCREMENT = 2
