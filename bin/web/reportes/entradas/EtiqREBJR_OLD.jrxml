@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report2" language="groovy" pageWidth="300" pageHeight="300" columnWidth="300" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.7715610000000048"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="codigoEntrada" class="java.lang.String"/>
+	<field name="fechaCaducidad" class="java.sql.Date"/>
+	<field name="fechaLlegada" class="java.sql.Date"/>
+	<field name="descProducto" class="java.lang.String"/>
+	<field name="cantidad" class="java.lang.Double"/>
+	<field name="descCategoria" class="java.lang.String"/>
+	<field name="numeroPallets" class="java.lang.Number"/>
+	<field name="numeroBultos" class="java.lang.Number"/>
+	<field name="costoUnitario" class="java.lang.Double"/>
+	<field name="albaran" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="300" splitType="Stretch">
+			<rectangle>
+				<reportElement x="5" y="5" width="290" height="290"/>
+			</rectangle>
+			<textField>
+				<reportElement x="17" y="59" width="254" height="25"/>
+				<textElement textAlignment="Center">
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{codigoEntrada}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="87" y="104" width="184" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{fechaCaducidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="87" y="84" width="184" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{fechaLlegada}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="17" y="123" width="252" height="86"/>
+				<textElement textAlignment="Center">
+					<font size="25"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{descProducto}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="17" y="84" width="70" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[F. Llegada:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="104" width="70" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[F. Caducid:]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement x="17" y="9" width="254" height="50"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128" drawText="false" checksumRequired="false" barHeight="40">
+					<jr:codeExpression><![CDATA[$F{codigoEntrada}]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+			<textField>
+				<reportElement x="94" y="273" width="64" height="17"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{cantidad}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="253" width="54" height="14"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Kg. / Uds]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="208" width="81" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Categoría :]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="57" y="218" width="227" height="37"/>
+				<textElement>
+					<font size="22"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{descCategoria}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="238" y="268" width="50" height="22"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Number"><![CDATA[$F{numeroPallets}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="201" y="276" width="27" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Number"><![CDATA[$F{numeroBultos}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="5" y="252" width="290" height="1"/>
+			</line>
+			<line>
+				<reportElement x="158" y="253" width="1" height="42"/>
+			</line>
+			<staticText>
+				<reportElement x="163" y="253" width="60" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nº Bulto:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="237" y="253" width="42" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pallets:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="228" y="253" width="1" height="42"/>
+			</line>
+			<line>
+				<reportElement x="196" y="274" width="5" height="17"/>
+			</line>
+			<line>
+				<reportElement x="82" y="273" width="5" height="17"/>
+			</line>
+			<staticText>
+				<reportElement x="90" y="253" width="65" height="15"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Orden]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="9" y="267" width="70" height="24"/>
+				<textElement textAlignment="Right">
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{costoUnitario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="158" y="271" width="35" height="23"/>
+				<textElement textAlignment="Right">
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{albaran}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Fichero en bin/classes -->
+<configuracion>
+	<baseDatos>
+		<SQL_DRV>org.gjt.mm.mysql.Driver</SQL_DRV>
+		<SQL_URL>jdbc:mysql://localhost:3306/tierrina</SQL_URL>
+		<SQL_USR>opilion_app</SQL_USR>
+		<SQL_PAS>opilion_app</SQL_PAS>
+		<conection>prueba</conection>
+		<rutaFicherosCSV>C://xampp/htdocs/sincronizacion/</rutaFicherosCSV>
+	</baseDatos>
+	<dbBackUp>
+		<host>localhost</host>
+		<puerto>3306</puerto>
+		<db>tierrina</db>
+		<filePath>C://</filePath>
+		<fileName>backup</fileName>
+		<rutaProceso>C://opilion_backups/mysqldump</rutaProceso>
+		<rutaBackups>opilion_backups/</rutaBackups>
+		<user>opilion_app</user>
+		<pass>opilion_app</pass>
+	</dbBackUp>
+	<dbBackUpDefecto>
+		<host>localhost</host>
+		<puerto>3306</puerto>
+		<db>tierrina</db>
+		<filePath>./webapps/opilion/</filePath>
+		<fileName>backup</fileName>
+		<rutaProceso>./webapps/opilion/backups/mysqldump</rutaProceso>
+		<rutaBackups>backups/</rutaBackups>
+		<user>opilion_app</user>
+		<pass>opilion_app</pass>
+	</dbBackUpDefecto>
+	<email>
+		<host>correo.induserco.com</host>
+		<user>prueba@induserco.com</user>
+		<pass>holahola</pass>
+		<from>prueba@induserco.com</from>
+		<to>andres@induserco.com</to>
+		<asunto>[TIERRINA VAQUEIRA] Alerta mantenimiento</asunto>
+	</email>
+	<sincronizacion>
+		<ficheroValidacion>C://xampp//htdocs//sincronizacion//tablet//validacionXML.xsd</ficheroValidacion>
+		<directorioFicheros>C://xampp//htdocs//sincronizacion//tablet//exportado//</directorioFicheros>
+		<directorioFicherosTmp>C://xampp//htdocs//sincronizacion//tablet//exportadoTmp//</directorioFicherosTmp>
+		<directorioFicherosRespuesta>C://xampp//htdocs//sincronizacion//tablet//respuestas//</directorioFicherosRespuesta>
+		<directorioMueveFicheros>C://xampp//htdocs//sincronizacion//tablet//sincronizado//</directorioMueveFicheros>
+	</sincronizacion>
+</configuracion>

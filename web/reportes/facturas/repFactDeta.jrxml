@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="repFactDeta" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="cfedd0a2-f5fa-4d6a-a7de-179f3ed20ded">
+	<property name="ireport.zoom" value="1.9487171000000059"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="idItem" class="java.lang.Long"/>
+	<field name="descripcion" class="java.lang.String"/>
+	<field name="codigoItem" class="java.lang.String"/>
+	<field name="cantidad" class="java.lang.Long"/>
+	<field name="precioUnitBruto" class="java.lang.Double"/>
+	<field name="precioUnitNeto" class="java.lang.Double"/>
+	<field name="precioTotal" class="java.lang.Double"/>
+	<field name="iva" class="java.lang.Double"/>
+	<field name="peso" class="java.lang.String"/>
+	<field name="agrupaciones" class="java.lang.String"/>
+	<field name="lote" class="java.lang.String"/>
+	<field name="precioKilo" class="java.lang.Double"/>
+	<field name="albaran" class="java.lang.String"/>
+	<field name="fechaEntrega" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="44958974-54ba-48d8-8d7e-a37789c824f8" x="1" y="3" width="24" height="14"/>
+				<textElement textAlignment="Right">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement uuid="26d5fbd4-5252-42c7-b984-3a50bd8c4489" mode="Transparent" x="1" y="0" width="26" height="20"/>
+				<graphicElement>
+					<pen lineWidth="0.75"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="1a3579d4-0c0f-441a-9b7a-d6dfd83f9a89" mode="Transparent" x="27" y="0" width="56" height="20"/>
+				<graphicElement>
+					<pen lineWidth="0.75"/>
+				</graphicElement>
+			</rectangle>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="570f10a8-db73-4fa4-853f-7b59fb288b69" x="27" y="2" width="56" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codigoItem}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement uuid="7d2b6555-76a3-402e-9929-1a91c63f0345" mode="Transparent" x="154" y="0" width="164" height="20"/>
+				<graphicElement>
+					<pen lineWidth="0.75"/>
+				</graphicElement>
+			</rectangle>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="f262a4b3-fc54-4616-8b52-0c2fbef6b68b" x="155" y="3" width="160" height="14"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="a298ca31-b06d-4875-9ae7-8159dcbd9606" x="320" y="3" width="83" height="14"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lote}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement uuid="ddeb7ffa-f1de-4f43-b7c7-6224bc6899a7" mode="Transparent" x="318" y="0" width="89" height="20"/>
+				<graphicElement>
+					<pen lineWidth="0.75"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="45983be3-029f-4797-a7e8-99db0c33f877" mode="Transparent" x="407" y="0" width="45" height="20"/>
+				<graphicElement>
+					<pen lineWidth="0.75"/>
+				</graphicElement>
+			</rectangle>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="ff0466f7-b59a-45f7-97ce-c9f2f2b2dd1a" x="412" y="3" width="33" height="14"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{peso}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement uuid="33cc4bfb-8cd6-48d2-bb9c-f0d441f05923" mode="Transparent" x="497" y="0" width="55" height="20"/>
+				<graphicElement>
+					<pen lineWidth="0.75"/>
+				</graphicElement>
+			</rectangle>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="b342aa40-75a0-4bb6-81f4-613eb72c7447" x="500" y="3" width="50" height="14"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{precioTotal}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement uuid="f62bb2d0-ccf1-4c67-b120-32f6863c0026" mode="Transparent" x="452" y="0" width="45" height="20"/>
+				<graphicElement>
+					<pen lineWidth="0.75"/>
+				</graphicElement>
+			</rectangle>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="ae772be4-e772-44e3-aab1-884a51e08de7" x="462" y="3" width="33" height="14"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{precioKilo}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement uuid="1a3579d4-0c0f-441a-9b7a-d6dfd83f9a89" mode="Transparent" x="83" y="0" width="72" height="20"/>
+				<graphicElement>
+					<pen lineWidth="0.75"/>
+				</graphicElement>
+			</rectangle>
+			<textField isBlankWhenNull="false">
+				<reportElement uuid="570f10a8-db73-4fa4-853f-7b59fb288b69" x="85" y="1" width="68" height="10"/>
+				<textElement textAlignment="Right">
+					<font size="6" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{albaran}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="570f10a8-db73-4fa4-853f-7b59fb288b69" x="85" y="9" width="68" height="10"/>
+				<textElement textAlignment="Right">
+					<font size="6" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" (" + $F{fechaEntrega} + ")"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

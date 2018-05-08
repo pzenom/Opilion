@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report2" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["D:\\Opilion\\web\\reportes\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select ad.ordenEnvasado,ad.codigoAlbaran, ad.codigoSalida, ad.pesoNeto, ad.numeroBultos,
+ad.cantidadUnitaria,ad.importe, ad.usuarioResponsable
+from albaran_detalle ad
+where ad.ordenEnvasado='OE2010061706']]>
+	</queryString>
+	<field name="ordenEnvasado" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="codigoAlbaran" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="codigoSalida" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pesoNeto" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numeroBultos" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cantidadUnitaria" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="importe" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="usuarioResponsable" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="469" splitType="Stretch">
+			<subreport>
+				<reportElement x="-1" y="156" width="554" height="55"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression class="java.lang.String"><![CDATA["D:\\Opilion\\web\\reportes\\TrazabilidadEN.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement x="0" y="70" width="100" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ordenEnvasado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="261" y="70" width="74" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Long"><![CDATA[$F{numeroBultos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="70" width="61" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{pesoNeto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="70" width="100" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{codigoSalida}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="50" width="100" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Orden envasado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="50" width="100" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Código salida:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="199" y="50" width="62" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Peso neto:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="261" y="50" width="74" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[numeroBultos:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="335" y="70" width="76" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{cantidadUnitaria}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="335" y="50" width="76" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[cantidadUnitaria :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="411" y="50" width="69" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Precio total:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="189" y="9" width="204" height="20"/>
+				<textElement>
+					<font size="8" isBold="false" isItalic="false" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[DETALLE DE VIDA DEL PRODUCTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="30" width="139" height="20"/>
+				<textElement>
+					<font size="8" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[REGISTRO DE SALIDA]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="480" y="70" width="65" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{usuarioResponsable}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="480" y="50" width="65" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Responsable:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="479" y="136" width="74" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Merma]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="136" width="192" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Materia prima]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="136" width="100" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Orden envasado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="392" y="136" width="87" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Peso]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="101" y="136" width="100" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Código entrada]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="116" width="141" height="20"/>
+				<textElement>
+					<font size="8" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[PROCESO: ENVASADO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="410" y="70" width="70" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{importe}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="254" width="100" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Orden congelado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="102" y="254" width="100" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Código de entrada]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="302" y="254" width="100" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Merma]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="202" y="254" width="100" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Peso]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="234" width="139" height="20"/>
+				<textElement>
+					<font size="8" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[PROCESO: CONGELADO]]></text>
+			</staticText>
+			<subreport>
+				<reportElement x="2" y="274" width="551" height="44"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "TrazabilidadGP.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement x="2" y="334" width="139" height="20"/>
+				<textElement>
+					<font size="8" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[PROCESO: CRIBADO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="202" y="354" width="100" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="302" y="354" width="100" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Hora inicio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="354" width="100" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Orden cribado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="402" y="354" width="100" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Peso]]></text>
+			</staticText>
+			<subreport>
+				<reportElement x="2" y="374" width="551" height="41"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "TrazabilidadCR.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement x="102" y="354" width="100" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Código de entrada]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,10 @@
+[{    
+        text:'Compras',
+        id:'compras',
+        leaf:true
+    },{
+        text:'Ventas',
+        id:'ventas',
+        leaf:true
+  
+}]

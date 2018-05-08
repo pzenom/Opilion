@@ -1,0 +1,212 @@
+[{
+    
+        text:'APPCC',
+        id:'appcc',
+		expanded: true,
+        children:[{
+			text:'Manual',
+			children:[{
+				text:'Introducci&oacute;n',
+				id:'introduccion',
+				leaf:true
+			},{
+				text:'Descripci&oacute;n Producto',
+				id:'desc_prod',
+				leaf:true
+			},{
+				text:'Descripci&oacute;n Proceso',
+				id:'desc_proc',
+				leaf:true
+			},{
+				text:'Diagrama de Flujo',
+				id:'diag_flujo',
+				leaf:true
+			},{
+				text:'An&aacute;lisis de Peligros y Medidas Preventivas',
+				id:'anal_peligros',
+				leaf:true
+			},{
+				text:'Identificaci&oacute;n de los PCC',
+				id:'indent_pcc',
+				leaf:true
+			},{
+				text:'L&iacute;mites Cr&iacute;ticos',
+				id:'limites_criticos',
+				leaf:true
+			},{
+				text:'Tabla de Gesti&oacute;n del Sistema APPCC',
+				id:'tabla_gestion_sistema',
+				leaf:true
+			},{
+				text:'Legislaci&oacute;n',
+				id:'legislacion',
+				leaf:true
+			}]
+		},{
+			text:'Procedimientos',
+			children:[{
+				text:'Control de la documentaci&oacute;n',
+				id:'control_doc',
+				leaf:true
+			},{
+				text:'Control MP y Homologaci&oacute;n Proveedores',
+				id:'control_mp',
+				leaf:true
+			},{
+				text:'Trazabilidad',
+				id:'trazabilidad',
+				leaf:true
+			},{
+				text:'Producto No Conforme y Retirada de Productos',
+				id:'retirada_prod',
+				leaf:true
+			},{
+				text:'Control de Expedici&oacute;n',
+				id:'control_exped',
+				leaf:true
+			},{
+				text:'Plan de Formaci&oacute;n',
+				id:'plan_formacion',
+				leaf:true
+			},{
+				text:'Control del Agua',
+				id:'control_agua',
+				leaf:true
+			},{
+				text:'Plan de Limpieza y Desinfecci&oacute;n',
+				id:'plan_limpieza',
+				leaf:true
+			},{
+				text:'Plan de Desinsectaci&oacute;n y Desratizaci&oacute;n',
+				id:'plan_desinsectacion',
+				leaf:true
+			},{
+				text:'Plan de Mantenimiento',
+				id:'plan_mantenimiento',
+				leaf:true
+			},{
+				text:'Verificaci&oacute;n y Plan de Muestreo',
+				id:'verificacion',
+				leaf:true
+			}]		
+		},{
+			text:'Instrucciones T&eacute;cnicas',
+			children:[{
+				text:'Normas de Higiene del personal',
+				id:'normas_higiene_personal',
+				leaf:true
+			},{
+				text:'Normas de Higiene de las Visitas',
+				id:'normas_higiene_visitas',
+				leaf:true
+			},{
+				text:'Lavado de Manos del Personal',
+				id:'lavado_manos',
+				leaf:true
+			}]
+		},{
+			text:'Registros',
+			children:[{
+				text:'Incidencias y Medidas Correctoras',
+				id:'incidencias',
+				leaf:true
+			},{
+				text:'Fichas T&eacute;cnicas de los Productos',
+				id:'fichas_tecnicas',
+				leaf:true
+			},{
+				text:'Registro de Desgranado',
+				id:'registro_desgranado',
+				leaf:true
+			},{
+				text:'Registro de Cribado',
+				id:'registro_cribado',
+				leaf:true
+			},{
+				text:'Registro Temperatura C&aacute;maras',
+				id:'registro_temperatura',
+				leaf:true
+			},{
+				text:'Registro de Envasado',
+				id:'registro_envasado',
+				leaf:true
+			},{
+				text:'Gesti&oacute;n de Pedidios / Control Salida Producto',
+				id:'gestion_pedidos',
+				leaf:true
+			},{
+				text:'Registro de Control Recepci&oacute;n de Materias Primas',
+				id:'registro_recepcion_mp',
+				leaf:true
+			},{
+				text:'Prueba de Cata',
+				id:'prueba_cata',
+				leaf:true
+			},{
+				text:'Carta de Compromiso de Transporte',
+				id:'compromiso_transporte',
+				leaf:true
+			},{
+				text:'Evaluaci&oacute;n de Proveedores',
+				id:'evaluacion_proveedores',
+				leaf:true
+			},{
+				text:'Registro de Simulacro Anual de Retirada de Producto',
+				id:'simulacro_retirada_producto',
+				leaf:true
+			},{
+				text:'Control de Temperaturas de Expedici&oacute;n',
+				id:'control_temperaturas',
+				leaf:true
+			},{
+				text:'Registro de Formaci&oacute;n de los Trabajadores',
+				id:'regristro_formacion_trabajadores',
+				leaf:true
+			},{
+				text:'Registro de Visitas',
+				id:'registro_visitas',
+				leaf:true
+			},{
+				text:'Programa Anual de Formaci&oacute;n',
+				id:'programa_anual_formacion',
+				leaf:true
+			},{
+				text:'Registro de Control de Cloro',
+				id:'registro_cloro',
+				leaf:true
+			},{
+				text:'Registro de Limpieza y de Desinfecci&oacute;n',
+				id:'registro_limpieza',
+				leaf:true
+			},{
+				text:'Registro de Tratamientos Control Plagas',
+				id:'registro_control_plagas',
+				leaf:true
+			},{
+				text:'Listado de Equipos sometidos a Revisión Peri&oacute;dica',
+				id:'listado_equipos',
+				leaf:true
+			},{
+				text:'Registro de Mantenimiento de Equipos e Instalaciones',
+				id:'mantenimiento_equipos',
+				leaf:true
+			},{
+				text:'Registro de Calibraciones de los Equipos',
+				id:'registro_calibraciones',
+				leaf:true
+			},{
+				text:'Registro de Verificaci&oacute;n',
+				id:'registro_verificaciones',
+				leaf:true
+			},{
+				text:'Programa Anual de Auditor&iacute;as Internas',
+				id:'auditorias internas',
+				leaf:true
+			},{
+				text:'Calendario de Anal&iacute;ticas',
+				id:'calendario_analisis',
+				leaf:true
+			}]
+		}]
+    
+}]

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="controlEnvasado" language="groovy" pageWidth="531" pageHeight="21" columnWidth="511" leftMargin="20" rightMargin="0" topMargin="0" bottomMargin="0" whenResourceMissingType="Empty" uuid="141eed6c-3faa-4845-97e3-2bba52b2ea8c">
+	<property name="ireport.zoom" value="4.594972986357277"/>
+	<property name="ireport.x" value="338"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="461278a9-f67e-42ed-90a9-85b3096bc6b8"/>
+	<subDataset name="Table Dataset 2" uuid="2dd45871-2265-48a6-bd12-9c3d236940ff"/>
+	<subDataset name="Table Dataset 3" uuid="f244cb0f-3ee4-4ed0-9cfb-e5a1e77af241"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\reportes\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="numLinea" class="java.lang.Integer"/>
+	<field name="codigoSalida" class="java.lang.String"/>
+	<field name="codigoEan" class="java.lang.String"/>
+	<field name="descripcion" class="java.lang.String"/>
+	<field name="pesoNeto" class="java.lang.Double"/>
+	<field name="numeroBultos" class="java.lang.Long"/>
+	<field name="cantidadUnitaria" class="java.lang.Double"/>
+	<field name="precioUnitario" class="java.lang.Double"/>
+	<field name="precioTotal" class="java.lang.Double"/>
+	<field name="bultosDS" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<field name="precioKilo" class="java.lang.Double"/>
+	<field name="lote" class="java.lang.String"/>
+	<field name="cantidad" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="19" splitType="Prevent">
+			<textField>
+				<reportElement uuid="bd77c7eb-900f-4277-89bb-81a863c17e86" x="108" y="3" width="59" height="14"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codigoEan}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement uuid="7a34c24e-2093-4cc3-93e7-b5738b195c1d" mode="Transparent" x="104" y="0" width="66" height="19"/>
+				<graphicElement>
+					<pen lineWidth="0.75"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="bf696e59-1351-4b9e-a9f0-2d78e081aaed" mode="Transparent" x="358" y="0" width="104" height="19"/>
+				<graphicElement>
+					<pen lineWidth="0.75"/>
+				</graphicElement>
+			</rectangle>
+			<textField>
+				<reportElement uuid="b0b204ed-9a96-4326-8db5-4d098ee3fb24" x="78" y="3" width="24" height="13"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement uuid="79db173a-0d47-4ba7-9952-8c03c4a8d84f" mode="Transparent" x="76" y="0" width="28" height="19"/>
+				<graphicElement>
+					<pen lineWidth="0.75"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="fd1a4c8c-d6b7-4b52-8257-98abfb486dd5" mode="Transparent" x="170" y="0" width="188" height="19"/>
+				<graphicElement>
+					<pen lineWidth="0.75"/>
+				</graphicElement>
+			</rectangle>
+			<textField>
+				<reportElement uuid="01d9e832-d877-4cc3-988e-6288c1a93022" x="177" y="3" width="178" height="14"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6f2accd5-423a-4866-a518-e724ce690b8a" x="466" y="2" width="42" height="15"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pesoNeto}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement uuid="a3aff025-cebd-4c38-9fe1-8917838b07f1" mode="Transparent" x="462" y="0" width="49" height="19"/>
+				<graphicElement>
+					<pen lineWidth="0.75"/>
+				</graphicElement>
+			</rectangle>
+			<textField>
+				<reportElement uuid="738500ae-01ba-45e4-88c8-1843d39a66dd" x="362" y="4" width="96" height="12"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lote}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

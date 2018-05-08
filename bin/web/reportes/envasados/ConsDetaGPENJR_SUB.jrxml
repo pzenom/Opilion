@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ConsDetaGPENJR_SUB" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="orden" class="java.lang.String" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[select gd.orden,gd.descripcion, gd.cantidadTeorica,gd.mermaProducto,gd.codigoEntrada, ( select en.nombre   from ordenentrada oe, registroentrada re, entidad en   where oe.codigoOrden=re.codigoOrden   and en.idUsuario=oe.idProveedor 	and re.codigoEntrada=gd.codigoEntrada ) as proveedor from gp_envasado_detalle gd where gd.orden = $P{orden}]]>
+	</queryString>
+	<field name="orden" class="java.lang.String"/>
+	<field name="descripcion" class="java.lang.String"/>
+	<field name="cantidadTeorica" class="java.lang.Double"/>
+	<field name="mermaProducto" class="java.lang.Double"/>
+	<field name="codigoEntrada" class="java.lang.String"/>
+	<field name="proveedor" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<line>
+				<reportElement x="192" y="80" width="97" height="1"/>
+			</line>
+			<textField>
+				<reportElement x="289" y="60" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{orden}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="168" y="61" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{codigoEntrada}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

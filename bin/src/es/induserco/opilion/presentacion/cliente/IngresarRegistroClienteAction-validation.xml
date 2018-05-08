@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.2//EN"
+"http://www.opensymphony.com/xwork/xwork-validator-
+1.0.2.dtd">
+<validators>
+	<field name="nombre">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>El nombre es requerido!</message>
+		</field-validator>
+	</field>
+	<field name="nif">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>NIF requerido!</message>
+		</field-validator>
+	</field>
+	<field name="telefono1">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>Telefono requerido!</message>
+		</field-validator>
+	</field>
+	<field name="email">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>Email requerido!</message>
+		</field-validator>
+		<field-validator type="email">
+          <message>Email no válido</message>
+      	</field-validator>
+	</field>
+	<field name="web">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>Web requerida!</message>
+		</field-validator>
+	</field>
+	<field name="calle">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>Calle requerida!</message>
+		</field-validator>
+	</field>
+	<field name="ubicacion">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>Ubicación requerida!</message>
+		</field-validator>
+	</field>
+	<field name="localidad">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>Localidad requerida!</message>
+		</field-validator>
+	</field>
+	<field name="codigoPostal">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>Código Postal es requerido!</message>
+		</field-validator>
+	</field>
+	<field name="numCuenta">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>Número de cuenta requerida!</message>
+		</field-validator>
+	</field>
+	<field name="limiteCredito">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>Límite de Crédito es requerido!</message>
+		</field-validator>
+	</field>
+	<field name="nombreContacto">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>Nombre es requerido!</message>
+		</field-validator>
+	</field>
+	<field name="telefonoContacto">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>Telefono es requerido!</message>
+		</field-validator>
+	</field>
+	<field name="emailContacto">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>El nombre es requerido!</message>
+		</field-validator>
+		<field-validator type="email">
+			<message>Email Inválido</message>
+		</field-validator>
+	</field>
+</validators>

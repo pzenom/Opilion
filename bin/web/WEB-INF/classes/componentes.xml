@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+	"http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<bean id="GestionUsuariosService"
+		class="es.induserco.opilion.negocio.gestionusuarios.GestionUsuariosService"
+		lazy-init="default" autowire="default" dependency-check="default">
+	</bean>
+	
+	<bean id="GestionEntidadesService"
+		class="es.induserco.opilion.negocio.gestionentidades.GestionEntidadesService"
+		lazy-init="default" autowire="default" dependency-check="default">
+	</bean>
+	
+	<!--bean id="GestionMensajesService"
+		class="com.comunik.negocio.gestionmensajes.GestionMensajesSimpleService"
+		lazy-init="default" autowire="default" dependency-check="default">
+	</bean-->
+	
+	<bean id="UsuarioDataService"
+		class="es.induserco.opiliondb.dao.usuario.UsuarioDataService"
+		lazy-init="default" autowire="default" dependency-check="default">
+	</bean>
+	
+	<bean id="EntidadDataService"
+		class="es.induserco.opiliondb.dao.entidad.EntidadDataService"
+		lazy-init="default" autowire="default" dependency-check="default">
+	</bean>
+	
+	<!-- bean id="MensajeDataService"
+		class="com.comunik.datos.mensaje.MensajeDataSimpleService"
+		lazy-init="default" autowire="default" dependency-check="default">
+	</bean-->	
+	
+	<bean id="LogService"
+		class="com.comunik.infraestructura.servicios.FileLog"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="codigo"><value>RFCG 4554</value></property>
+		<property name="fichero"><value>C://entorno//salidaLog.txt</value></property>
+	</bean>	
+	
+	
+</beans>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report2" language="groovy" pageWidth="283" pageHeight="240" columnWidth="283" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" whenResourceMissingType="Empty" isIgnorePagination="true">
+	<property name="ireport.zoom" value="2.5937424601000076"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="codigoEntrada" class="java.lang.String"/>
+	<field name="descProducto" class="java.lang.String"/>
+	<field name="cantidad" class="java.lang.Double"/>
+	<field name="descVehiculo" class="java.lang.String"/>
+	<field name="descCategoria" class="java.lang.String"/>
+	<field name="fechaCaducidad" class="java.lang.String"/>
+	<field name="peso" class="java.lang.Double"/>
+	<field name="fechaLlegada" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="215" splitType="Stretch">
+			<textField>
+				<reportElement x="17" y="44" width="254" height="25"/>
+				<textElement textAlignment="Center">
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{codigoEntrada}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="11" y="69" width="261" height="56"/>
+				<textElement textAlignment="Center">
+					<font size="20"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{descProducto}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="11" y="5" width="254" height="50"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128" drawText="false" checksumRequired="false" barHeight="40">
+					<jr:codeExpression><![CDATA[$F{codigoEntrada}]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+			<staticText>
+				<reportElement x="78" y="179" width="122" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Legumbres La Tierrina Vaqueira S.L.U]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="53" y="189" width="175" height="10"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[P. I. Barcia-Almuña Parcl.11-2, 33700 Luarca (Asturias)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="91" y="198" width="97" height="10"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Atención al cliente: 606377062]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="12" y="162" width="260" height="14"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{descVehiculo}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="60" y="125" width="85" height="14"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{descCategoria}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="11" y="150" width="180" height="13"/>
+				<textElement textAlignment="Left">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Consumir preferentemente antes de:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="190" y="150" width="82" height="13"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{fechaCaducidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="238" y="125" width="34" height="14"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{peso}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="144" y="125" width="95" height="14"/>
+				<textElement/>
+				<text><![CDATA[Peso por bulto (Kg.): ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="125" width="50" height="14"/>
+				<textElement/>
+				<text><![CDATA[Categoría:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="190" y="138" width="82" height="13"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{fechaLlegada}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="11" y="138" width="180" height="13"/>
+				<textElement textAlignment="Left">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Fecha de envasado:]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

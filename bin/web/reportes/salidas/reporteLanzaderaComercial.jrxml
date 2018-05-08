@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteComercial" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Empty" uuid="ff2d87ce-2adc-4f0f-96f9-4c6e8a8289b0">
+	<property name="ireport.zoom" value="1.2100000000000013"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA["C:\\reportes\\salidas"]]></defaultValueExpression>
+	</parameter>
+	<field name="nombreImagenQR" class="java.lang.String"/>
+	<field name="idComercial" class="java.lang.Long"/>
+	<field name="pedidosDS" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<field name="lanzaderaNumero" class="java.lang.Long"/>
+	<field name="totalLanzaderas" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="115" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy HH.mm.ss">
+				<reportElement uuid="bf8baff0-4b9b-4466-939a-071060b90bfa" x="5" y="61" width="277" height="24"/>
+				<textElement/>
+				<textFieldExpression><![CDATA["Fecha de generación de la lanzadera: " +  new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new java.util.Date())]]></textFieldExpression>
+			</textField>
+			<image hAlign="Center" vAlign="Middle" isLazy="true" onErrorType="Blank">
+				<reportElement uuid="c8a0271e-bc04-4759-b238-76dc40dc96a5" x="440" y="0" width="115" height="115"/>
+				<imageExpression><![CDATA["../../reportes_generados/lanzadera_comercial/" + $F{nombreImagenQR} + "_" + $V{PAGE_NUMBER} + ".png"]]></imageExpression>
+			</image>
+			<rectangle>
+				<reportElement uuid="a7d694b3-687f-4c12-a64b-e24bc69f22a0" mode="Transparent" x="2" y="4" width="417" height="103"/>
+			</rectangle>
+			<textField>
+				<reportElement uuid="a8585657-0934-4dda-9263-ce37ec71bc10" x="2" y="4" width="416" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="15" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["LANZADERA " + $F{lanzaderaNumero} + " PARA EL COMERCIAL: " + $F{idComercial}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="dd3a76cb-f9f0-4a87-b3f2-d6f1d95684e5" x="318" y="41" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nombreImagenQR}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="60" splitType="Stretch">
+			<subreport>
+				<reportElement uuid="1ce0b39d-a131-4d45-824d-abe0a90df95c" x="0" y="20" width="554" height="30"/>
+				<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+				<dataSourceExpression><![CDATA[$F{pedidosDS}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "/reporteLanzaderaComercial_pedido.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement uuid="ab143cb1-dec8-4ff1-9561-9bf4021259f6" mode="Opaque" x="0" y="0" width="32" height="20" backcolor="#CCCCCC"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pedido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ab143cb1-dec8-4ff1-9561-9bf4021259f6" mode="Opaque" x="32" y="0" width="522" height="20" backcolor="#CCCCCC"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Productos]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="40" splitType="Stretch">
+			<textField>
+				<reportElement uuid="85e1d245-7862-4837-9745-311c39fd1a47" x="437" y="20" width="85" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="481b6589-3b7b-4e7e-a1fa-7c39f38a8623" x="522" y="20" width="40" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="d4c3ac7e-bdf7-463f-b8c4-211b356be659" x="0" y="19" width="32" height="11"/>
+				<textElement textAlignment="Left">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[LANZA_02]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d4c3ac7e-bdf7-463f-b8c4-211b356be659" x="0" y="30" width="23" height="10"/>
+				<textElement textAlignment="Left">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Rev 01]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

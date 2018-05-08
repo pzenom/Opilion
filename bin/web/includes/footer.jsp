@@ -1,0 +1,1 @@
+&copy; <a href="http://www.induserco.com" title="Web Corporativa de Induserco" alt="Web Corporativa de Induserco">Induserco Desarrollo S.L.</a> <%= new java.text.SimpleDateFormat("yyyy").format(new java.util.Date()) %>

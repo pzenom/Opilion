@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ConsMantJR" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombreMant" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="descripcion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="4" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="66" splitType="Stretch">
+			<staticText>
+				<reportElement x="323" y="33" width="198" height="20" forecolor="#CCCCCC"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REGISTRO MANTENIMIENTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="337" y="9" width="127" height="19"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SISTEMA APPCC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="719" y="14" width="83" height="14" forecolor="#CCCCCC"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[APPCC-R01P02]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="719" y="43" width="38" height="15"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="762" y="28" width="40" height="15"/>
+				<textElement/>
+				<text><![CDATA[Rev. 01]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="757" y="43" width="45" height="15"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="26" splitType="Stretch">
+			<rectangle>
+				<reportElement x="190" y="6" width="177" height="20" forecolor="#CC9900" backcolor="#333333"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="367" y="6" width="50" height="20" forecolor="#CC9900" backcolor="#333333"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="417" y="6" width="331" height="20" forecolor="#CC9900" backcolor="#333333"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="749" y="6" width="38" height="20" forecolor="#CC9900" backcolor="#333333"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="367" y="6" width="50" height="20" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="6" width="190" height="20" forecolor="#CC9900" backcolor="#333333"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="751" y="6" width="36" height="20" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Firma]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="6" width="190" height="20" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Equipo / Area de Instalación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="189" y="6" width="177" height="20" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo de Mantenimiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="417" y="6" width="331" height="20" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descripción]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="12" splitType="Stretch">
+			<line>
+				<reportElement x="189" y="0" width="1" height="12"/>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="1" height="12"/>
+			</line>
+			<line>
+				<reportElement x="365" y="0" width="1" height="12"/>
+			</line>
+			<line>
+				<reportElement x="418" y="0" width="1" height="12"/>
+			</line>
+			<line>
+				<reportElement x="786" y="0" width="1" height="12"/>
+			</line>
+			<textField>
+				<reportElement x="191" y="1" width="174" height="11"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nombreMant}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="3" y="0" width="186" height="12"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Long"><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="746" y="0" width="1" height="12"/>
+			</line>
+			<textField>
+				<reportElement x="367" y="1" width="52" height="11"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="421" y="1" width="325" height="11"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{descripcion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="16" splitType="Stretch">
+			<rectangle>
+				<reportElement x="1" y="0" width="787" height="16" forecolor="#CC9900" backcolor="#333333"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="3" y="0" width="784" height="16" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Tierrina Vaqueira - Registro de Entrada]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement x="677" y="0" width="80" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Página "+$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="762" y="0" width="40" height="20"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="24" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="788" height="1"/>
+			</line>
+		</band>
+	</summary>
+</jasperReport>

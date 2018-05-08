@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ventasmes_ventas" language="groovy" pageWidth="555" pageHeight="40" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="a4693d33-5444-43e0-a91f-7a5dc087f9db">
+	<property name="ireport.zoom" value="2.5937424601000028"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[/* Albaranes entregados el mes pasado */
+SELECT CONCAT(e.nombre, IF(e.apellidos <> '', CONCAT(' ', e.apellidos), '')) AS cliente, /*a.codigoAlbaran, ad.codigoSalida, ad.idProducto, */ p.nombre, SUM(ad.cantidadUnitaria) AS cantidad
+FROM albaran a
+ INNER JOIN albaran_detalle ad ON a.codigoAlbaran = ad.codigoAlbaran
+ INNER JOIN producto p ON ad.idProducto = p.idProducto
+ INNER JOIN entidad e ON e.idUsuario = a.idCliente
+WHERE
+	/* Greater or equal to the start of last month */
+	a.fechaEntrega >= DATE_ADD(LAST_DAY(DATE_SUB(NOW(), INTERVAL 2 MONTH)), INTERVAL 1 DAY)
+	/* Smaller or equal than one month ago */
+	/*	AND a.fechaEntrega <= DATE_SUB(NOW(), INTERVAL 1 MONTH)*/
+	AND a.fechaEntrega <= DATE_ADD(LAST_DAY(DATE_SUB(NOW(), INTERVAL 1 MONTH)), INTERVAL 1 DAY)
+GROUP BY a.idCliente, ad.idProducto
+ORDER BY e.nombre, e.apellidos, p.nombre;]]>
+	</queryString>
+	<field name="cliente" class="java.lang.String"/>
+	<field name="nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cantidad" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="20">
+			<rectangle>
+				<reportElement uuid="f053a911-9e4d-40bf-8d5b-e94ae3e326ef" mode="Opaque" x="499" y="0" width="56" height="20" backcolor="#CCCCCC"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="f053a911-9e4d-40bf-8d5b-e94ae3e326ef" mode="Opaque" x="255" y="0" width="244" height="20" backcolor="#CCCCCC"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="f053a911-9e4d-40bf-8d5b-e94ae3e326ef" mode="Opaque" x="0" y="0" width="255" height="20" backcolor="#CCCCCC"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="803511a5-e9d4-4039-9ed6-c730588a9539" x="0" y="0" width="255" height="20"/>
+				<textElement/>
+				<text><![CDATA[Cliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="803511a5-e9d4-4039-9ed6-c730588a9539" x="255" y="0" width="244" height="20"/>
+				<textElement/>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="803511a5-e9d4-4039-9ed6-c730588a9539" x="499" y="0" width="56" height="20"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="f053a911-9e4d-40bf-8d5b-e94ae3e326ef" mode="Opaque" x="255" y="0" width="244" height="20" backcolor="#FFFFFF"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="f053a911-9e4d-40bf-8d5b-e94ae3e326ef" mode="Opaque" x="0" y="0" width="255" height="20" backcolor="#FFFFFF"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="f053a911-9e4d-40bf-8d5b-e94ae3e326ef" mode="Opaque" x="499" y="0" width="56" height="20" backcolor="#FFFFFF"/>
+			</rectangle>
+			<textField>
+				<reportElement uuid="266c77a7-aa38-4096-9355-da34ade79b47" x="0" y="0" width="255" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{cliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3944bc54-bf0a-4682-a155-bc631a61f8d1" x="255" y="0" width="244" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="41f302d9-ab74-4a80-80f8-74bc261323ad" x="499" y="0" width="56" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

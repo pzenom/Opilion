@@ -1,0 +1,13 @@
+[{
+	text:'Clientes y Proveedores',
+    expanded: true,
+    children:[{
+        text:'Clientes',
+        id:'clientes',
+        leaf:true
+	},{
+		text:'Proveedores',
+        id:'proveedores',
+        leaf:true
+	}]
+}]

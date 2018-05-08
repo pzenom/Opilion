@@ -1,0 +1,13 @@
+[{    
+        text:'Albaranes de Salida',
+        id:'albaranesSalida',
+        leaf:true
+    },{
+        text:'Diario Albaranes',
+        id:'diarioAlbaranes',
+        leaf:true
+	},{
+        text:'Bandeja de Rutas',
+        id:'rutas',
+        leaf:true
+}]

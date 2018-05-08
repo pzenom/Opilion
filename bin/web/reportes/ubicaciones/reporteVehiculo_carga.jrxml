@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteVehiculo_carga" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="0077529e-0f0f-43fa-a7b7-e757fc948f09">
+	<property name="ireport.zoom" value="2.853116706110005"/>
+	<property name="ireport.x" value="533"/>
+	<property name="ireport.y" value="0"/>
+	<field name="idProducto" class="java.lang.Long"/>
+	<field name="registro" class="java.lang.String"/>
+	<field name="cantidad" class="java.lang.Double"/>
+	<field name="fechaCaducidad" class="java.lang.String"/>
+	<field name="nombreProducto" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="60" splitType="Stretch">
+			<textField>
+				<reportElement uuid="cdcd6bb3-b676-4ab2-b4f9-42987d30b6f8" x="227" y="0" width="177" height="60"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombreProducto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b74d5a71-b069-4953-957e-f5848e47d71c" x="404" y="0" width="62" height="60"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{registro}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="abb94c38-cb81-40d8-bb59-c8cf5686ddda" x="466" y="0" width="29" height="60"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1910f350-1d4c-4465-9ad5-f2d5c2ba7a29" x="495" y="0" width="60" height="60"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fechaCaducidad}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement uuid="6c066088-f07c-435c-b5c6-04e4d6715fde" mode="Transparent" x="227" y="0" width="177" height="60"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="6c066088-f07c-435c-b5c6-04e4d6715fde" mode="Transparent" x="495" y="0" width="60" height="60"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="6c066088-f07c-435c-b5c6-04e4d6715fde" mode="Transparent" x="466" y="0" width="29" height="60"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="6c066088-f07c-435c-b5c6-04e4d6715fde" mode="Transparent" x="404" y="0" width="62" height="60"/>
+			</rectangle>
+			<componentElement>
+				<reportElement uuid="9c15381b-f8f8-481d-8f32-baa818bb0ba0" x="0" y="10" width="227" height="50"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128" drawText="true" checksumRequired="false" barHeight="40">
+					<jr:codeExpression><![CDATA[$F{registro}]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+		</band>
+	</detail>
+</jasperReport>

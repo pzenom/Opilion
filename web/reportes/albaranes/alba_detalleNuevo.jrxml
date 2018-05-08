@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="controlEnvasado" language="groovy" pageWidth="531" pageHeight="21" columnWidth="511" leftMargin="20" rightMargin="0" topMargin="0" bottomMargin="0" whenResourceMissingType="Empty" uuid="3f65302e-bb8c-4746-844e-4b29a2f24e2f">
+	<property name="ireport.zoom" value="2.3579476910000277"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="7a0f06ae-5f4a-42db-8265-322eb1d66170"/>
+	<subDataset name="Table Dataset 2" uuid="b83138c6-6b1d-4d6f-944c-83449fa5870d"/>
+	<subDataset name="Table Dataset 3" uuid="f7b7f576-5776-4f70-b4c8-c18b695b3f70"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\reportes\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="numLinea" class="java.lang.Integer"/>
+	<field name="codigoSalida" class="java.lang.String"/>
+	<field name="codigoEan" class="java.lang.String"/>
+	<field name="descripcion" class="java.lang.String"/>
+	<field name="pesoNeto" class="java.lang.Double"/>
+	<field name="numeroBultos" class="java.lang.Long"/>
+	<field name="cantidadUnitaria" class="java.lang.Double"/>
+	<field name="precioUnitario" class="java.lang.Double"/>
+	<field name="precioTotal" class="java.lang.Double"/>
+	<field name="bultosDS" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<field name="precioKilo" class="java.lang.Double"/>
+	<field name="lote" class="java.lang.String"/>
+	<field name="cantidad" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="19" splitType="Prevent">
+			<textField>
+				<reportElement uuid="a6fc3fe4-c3d1-4e89-a3c1-f81716123e6e" x="12" y="3" width="59" height="14"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codigoEan}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement uuid="9c4ba29c-55c4-4c5d-9c82-a7543d5482cd" mode="Transparent" x="8" y="0" width="66" height="19"/>
+				<graphicElement>
+					<pen lineWidth="0.75"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="a1f4ab4a-7388-4d5e-af12-1e1f29417829" mode="Transparent" x="262" y="0" width="104" height="19"/>
+				<graphicElement>
+					<pen lineWidth="0.75"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="237bf142-276c-4d84-82f6-ce395b6c346e" mode="Transparent" x="415" y="0" width="48" height="19"/>
+				<graphicElement>
+					<pen lineWidth="0.75"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="01dafdf6-fa21-45b9-9524-ee525d06f1b5" mode="Transparent" x="463" y="0" width="48" height="19"/>
+				<graphicElement>
+					<pen lineWidth="0.75"/>
+				</graphicElement>
+			</rectangle>
+			<textField>
+				<reportElement uuid="310b8706-c80a-4fb6-864e-f33f2ef922ac" x="-18" y="3" width="24" height="13"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="230c866d-dd76-4260-aabe-7f28a93102f7" x="466" y="2" width="44" height="15"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{precioTotal}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement uuid="5c4b26c4-37ad-46df-8c3c-3bd8b19cc7c5" mode="Transparent" x="-20" y="0" width="28" height="19"/>
+				<graphicElement>
+					<pen lineWidth="0.75"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="18bb0bce-d1b9-4c08-9cba-77e016230673" mode="Transparent" x="74" y="0" width="188" height="19"/>
+				<graphicElement>
+					<pen lineWidth="0.75"/>
+				</graphicElement>
+			</rectangle>
+			<textField>
+				<reportElement uuid="884b452a-27b8-4301-a004-c2409d30b5d6" x="81" y="3" width="178" height="14"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="eb03961a-4f72-4b37-b3f6-8369209fb083" x="370" y="2" width="42" height="15"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pesoNeto}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement uuid="52d18564-c598-4dd3-a7fa-cb042d6d56c0" mode="Transparent" x="366" y="0" width="49" height="19"/>
+				<graphicElement>
+					<pen lineWidth="0.75"/>
+				</graphicElement>
+			</rectangle>
+			<textField>
+				<reportElement uuid="6401f6fe-8c54-4892-b6f0-0e6dc791f5de" x="417" y="2" width="44" height="15"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{precioUnitario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="69621aaa-64ef-4f1a-976a-b1df94b466f2" x="266" y="4" width="96" height="12"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lote}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

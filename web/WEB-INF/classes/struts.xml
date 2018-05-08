@@ -1,0 +1,2150 @@
+<?xml version="1.0" encoding="ISO-8859-15" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="opilion" extends="struts-default, jasperreports-default">
+	<result-types>
+		<result-type name="jasper" class="org.apache.struts2.views.jasperreports.JasperReportsResult" />
+		<result-type name="json" class="com.googlecode.jsonplugin.JSONResult"/>
+	</result-types>
+		<interceptors>
+			<interceptor name="login" class="es.induserco.opilion.presentacion.interceptor.LoginInterceptor" />
+			<interceptor name="auth" class="es.induserco.opilion.presentacion.interceptor.AuthenticationInterceptor" />
+			<interceptor-stack name="defaultLoginStack">
+				<interceptor-ref name="auth" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="params" />
+				<interceptor-ref name="login" />
+				<interceptor-ref name="i18n" />
+				<interceptor-ref name="prepare" />
+				<interceptor-ref name="chain" />
+				<interceptor-ref name="modelDriven" />
+				<interceptor-ref name="fileUpload" />
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="params" />
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="validation" />
+				<interceptor-ref name="workflow" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="defaultLoginStack" />
+		<default-action-ref name="Crawler" />
+		<global-results>
+			<result name="login">/index.jsp</result>
+			<result name="nopermiso">nopermiso.jsp</result>
+			<result name="login-success" type="redirectAction">
+				Login
+			</result>
+		</global-results>
+		<action name="Login"
+			class="es.induserco.opilion.presentacion.login.LoginAction">
+			<result name="success">pagEscritorio.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="failure">index.jsp</result>
+		</action>
+		<action name="Logout"
+			class="es.induserco.opilion.presentacion.login.LogoutAction">
+			<result name="success" type="redirect">/index.jsp</result>
+		</action>
+		<action name="Inicio"
+			class="es.induserco.opilion.presentacion.InicioAction">
+			<result>pagEscritorio.jsp</result>
+		</action>
+		<action name="InicioAjax"
+			class="es.induserco.opilion.presentacion.InicioAction">
+			<result>pagEscritorioAjax.jsp</result>
+		</action>
+		<action name="AdministracionSistema"
+			class="es.induserco.opilion.presentacion.administracionSistema.AdministracionSistemaAction">
+			<result>administracion/administracion.jsp</result>
+		</action>
+		<action name="AdministracionRutas"
+			class="es.induserco.opilion.presentacion.rutas.AdministracionRutasAction">
+			<result>rutas/rutas.jsp</result>
+		</action>
+		<action name="InsertarRuta"
+			class="es.induserco.opilion.presentacion.rutas.InsertarRutaAction">
+			<result>vacio.jsp</result>
+		</action>
+		<action name="CargarRuta"
+			class="es.induserco.opilion.presentacion.rutas.CargarRutaAction">
+			<result>rutas/mostrarRuta.jsp</result>
+		</action>
+		<action name="GuardarConfiguracionSistema"
+			class="es.induserco.opilion.presentacion.administracionSistema.GuardarConfiguracionSistemaAction">
+			<result>vacio.jsp</result>
+		</action>
+		<action name="TodasEtiquetasRE"
+			class="es.induserco.opilion.presentacion.registroentrada.TodasEtiquetasREAction">
+			<result>pagEscritorio.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- ########################### -->
+		<!-- GESTIÓN ENTIDAD / ENTIDADES -->
+		<!-- ########################### -->
+		<!-- ########################### -->
+		<!-- IMP / EXP DATOS -->
+		<!-- ########################### -->
+		<action name="ExportarDatos"
+			class="es.induserco.opilion.presentacion.sincronizacion.ExportarDatosAction">
+			<result>vacio.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ImportarDatos"
+			class="es.induserco.opilion.presentacion.sincronizacion.ImportarDatosAction">
+			<result>vacio.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- ########################### -->
+		<!-- END IMP / EXP DATOS -->
+		<!-- ########################### -->
+		<action name="RegistroEntidad"
+			class="es.induserco.opilion.presentacion.entidad.RegistroEntidadAction">
+			<result>entidad/registroEntidad.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="IngresaEntidad"
+			class="es.induserco.opilion.presentacion.entidad.IngresaEntidadAction">
+			<result name="SUCCESS" type="redirectAction">
+					<param name="actionName">ConsultaClientes</param>
+			</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="CargarEntidad"
+			class="es.induserco.opilion.presentacion.entidad.CargarEntidadAction">
+			<result>entidad/actualizaEntidad.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ActualizarEntidad"
+			class="es.induserco.opilion.presentacion.entidad.ActualizarEntidadAction">
+			<result name="SUCCESS" type="redirectAction">
+					<param name="actionName">ConsultaClientes</param>
+			</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="GestionSalidasClientes"
+			class="es.induserco.opilion.presentacion.cliente.GestionSalidasClientesAction">
+			<result>cliente/gestionSalidasClientes.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- ########################### -->
+		<!-- END GESTIÓN ENTIDAD / ENTIDADES -->
+		<!-- ########################### -->
+		<!-- ########################### -->
+		<!-- GESTIÓN PEDIDOS -->
+		<!-- ########################### -->
+		<action name="InfoPedidoAjax" class="es.induserco.opilion.presentacion.registros.InfoPedidoAjaxAction">
+			<result>registrosalida/infoPedidoAjax.jsp</result>
+			<result name="INPUT">registrosalida/infoPedidoAjax.jsp</result>
+			<result name="ERROR">error.jsp</result>
+		</action>
+		<action name="FiltroPedidos"
+			class="es.induserco.edifact.presentacion.orders.ListaOrdersAction">
+			<result>edifact/filtroOrders.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="CargaPedidoEditable"
+			class="es.induserco.edifact.presentacion.orders.CargaPedidoEditableAction">
+			<result>registrosalida/verPedidoEditable.jsp</result>
+			<result name="error">edifact/edifactError.jsp</result>
+		</action>
+		<action name="CargaPedido"
+			class="es.induserco.edifact.presentacion.orders.CargaPedidoAction">
+			<result>registrosalida/verPedido.jsp</result>
+			<result name="error">edifact/edifactError.jsp</result>
+		</action>
+		<action name="UpdateOrder"
+			class="es.induserco.edifact.presentacion.orders.UpdateOrderAction">
+			<result type="chain">ConsOrders</result>
+			<result name="error">edifact/edifactError.jsp</result>
+		</action>
+		<action name="MuestraProductosPedido" class="es.induserco.edifact.presentacion.orders.MuestraProductosPedidoAction">
+			<result>registrosalida/muestraProductosPedido.jsp</result>
+			<result name="ERROR">error.jsp</result>
+		</action>
+		<action name="MuestraInformacionEstado" class="es.induserco.edifact.presentacion.orders.MuestraInformacionEstadoAction">
+			<result>registrosalida/muestraInformacionEstado.jsp</result>
+			<result name="ERROR">error.jsp</result>
+		</action>
+		<action name="FormasPagoCliente" class="es.induserco.edifact.presentacion.orders.FormasPagoClienteAction">
+			<result>registrosalida/formasPagoClienteAjax.jsp</result>
+			<result name="ERROR">error.jsp</result>
+		</action>
+		<action name="DireccionesCliente" class="es.induserco.edifact.presentacion.orders.DireccionesClienteAction">
+			<result>registrosalida/direccionesClienteAjax.jsp</result>
+			<result name="ERROR">error.jsp</result>
+		</action>
+		<action name="FiltroProductosMalDefinidos" class="es.induserco.opilion.presentacion.producto.FiltroProductosMalDefinidosAction">
+			<result>producto/filtroProductosMalDefinidos.jsp</result>
+			<result name="ERROR">error.jsp</result>
+		</action>
+		<action name="PedidosAlbaran"
+			class="es.induserco.opilion.presentacion.registros.PedidosAlbaranAction">
+			<result>registrosalida/detaRegiAlbaOrden.jsp</result>
+			<result name="error">edifact/edifactError.jsp</result>
+		</action>
+		<action name="LineasDireccionAlbaran"
+			class="es.induserco.opilion.presentacion.registros.LineasDireccionAlbaranAction">
+			<result>registrosalida/detaRegiAlbaOrden.jsp</result>
+			<result name="error">edifact/edifactError.jsp</result>
+		</action>
+		<action name="ListaLineasPedidoDireccion"
+			class="es.induserco.opilion.presentacion.registros.ListaLineasPedidoDireccionAction">
+			<result>registrosalida/filtraLineasPedidoDireccion.jsp</result>
+			<result name="error">edifact/edifactError.jsp</result>
+		</action>
+		<!-- ########################### -->
+		<!-- END GESTIÓN PEDIDOS -->
+		<!-- ########################### -->
+		<!-- GESTIÓN USUARIOS -->
+		<!-- ########################### -->
+		<action name="EditarInformacionUsuario"
+			class="es.induserco.opilion.presentacion.usuario.EditarInformacionUsuarioAction">
+			<result>vacio.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="InsertarUsuario"
+			class="es.induserco.opilion.presentacion.usuario.InsertarUsuarioAction">
+			<result>vacio.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- ########################### -->
+		<!-- END GESTIÓN USUARIOS -->
+		<!-- ########################### -->
+		<!-- GESTIÓN ALBARANES -->
+		<!-- ########################### -->
+		<action name="FacturasAlbaran"
+			class="es.induserco.opilion.presentacion.registros.FacturasAlbaranAction">
+			<result>registrosalida/facturasAlbaran.jsp</result>
+			<result name="error">edifact/edifactError.jsp</result>
+		</action>
+		<action name="AlbaranesFactura"
+			class="es.induserco.opilion.presentacion.registros.AlbaranesFacturaAction">
+			<result>registrosalida/detaRegiFact.jsp</result>
+			<result name="error">edifact/edifactError.jsp</result>
+		</action>
+		<action name="FiltroAlbaranes"
+			class="es.induserco.opilion.presentacion.registros.FiltroAlbaranesAction">
+			<result>registrosalida/filtroAlbaranes.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="CompruebaLotesLeidosAlbaran"
+			class="es.induserco.opilion.presentacion.registros.CompruebaLotesLeidosAlbaranAction">
+			<result>registrosalida/compruebaLotesLeidos.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="EntregarAlbaran"
+			class="es.induserco.opilion.presentacion.registros.EntregarAlbaranAction">
+			<result>vacio.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="MuestraDireccionesAlbaran"
+			class="es.induserco.opilion.presentacion.registros.MuestraDireccionesAlbaranAction">
+			<result>registrosalida/muestraDireccionesAlbaran.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="MuestraLotesProducto" class="es.induserco.opilion.presentacion.registros.MuestraLotesProductoAction">
+			<result>registrosalida/muestraLotesProducto.jsp</result>
+			<result name="ERROR">error.jsp</result>
+		</action>
+		<!-- Editar albaran simple-->
+		<action name="EditDetaAlba"
+			class="es.induserco.opilion.presentacion.registros.EditDetaAlbaAction">
+			<result>registrosalida/detaRegiAlba.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ActualizarAlbaran"
+			class="es.induserco.opilion.presentacion.registros.ActualizarAlbaranAction">
+			 <result type="chain">ConsAlba</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- ########################### -->
+		<!-- END GESTIÓN ALBARANES -->
+		<!-- ########################### -->
+		<!-- ########################### -->
+		<!-- GESTIÓN FACTURAS -->
+		<!-- ########################### -->
+		<action name="FiltroFacturas"
+			class="es.induserco.opilion.presentacion.registros.FiltroFacturasAction">
+			<result>registrosalida/filtroFacturas.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="GenerarFacturaLibre"
+			class="es.induserco.opilion.presentacion.registros.GenerarFacturaLibreAction">
+			<result>registrosalida/generarFacturaLibre.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="SalvaFacturaLibre"
+			class="es.induserco.opilion.presentacion.registros.SalvaFacturaLibreAction">
+			<result type="chain">ConsFact</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="EditFact"
+			class="es.induserco.opilion.presentacion.registros.EditFactAction">
+			<result>registrosalida/editarFactura.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ActualizarFactura"
+			class="es.induserco.opilion.presentacion.registros.ActualizarFacturaAction">
+			<result type="chain">ConsFact</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ActualizarEstadoFactura"
+			class="es.induserco.opilion.presentacion.registros.ActualizarEstadoFacturaAction">
+			<result type="chain">ConsFact</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="DividirFacturaCuotas"
+			class="es.induserco.opilion.presentacion.registros.DividirFacturaCuotasAction">
+			<result type="chain">ConsFact</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="VerCuotasFactura"
+			class="es.induserco.opilion.presentacion.registros.VerCuotasFacturaAction">
+			<result>registrosalida/verCuotasFactura.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ActualizarFechaEvento"
+			class="es.induserco.opilion.presentacion.ActualizarFechaEventoAction">
+			<result>vacio.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- ########################### -->
+		<!-- END GESTIÓN FACTURAS -->
+		<!-- ########################### -->
+		<!-- ########################### -->
+		<!-- GESTIÓN REGISTROS ENTRADA -->
+		<!-- ########################### -->
+		<action name="EtiquetaTodosBultosRE" class="es.induserco.opilion.presentacion.registroentrada.EtiquetaTodosBultosREAction">
+			<result name="success" type="jasper">
+            	<param name="location">${url}</param>
+            	<param name="dataSource">re</param>
+				<param name="format">PDF</param>
+			</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- ########################### -->
+		<!-- END GESTIÓN REGISTROS ENTRADA -->
+		<!-- ########################### -->
+		<!-- ########################### -->
+		<!-- GESTIÓN PRODUCTOS -->
+		<!-- ########################### -->
+		<action name="SubidaImagen"
+			class="es.induserco.opilion.presentacion.producto.SubidaImagenAction">
+			<!-- <result type="chain">UploadEdifact</result> -->
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- ########################### -->
+		<!-- END GESTIÓN PRODUCTOS -->
+		<!-- ########################### -->
+		<action name="ConsultaEntidades"
+			class="es.induserco.opilion.presentacion.consultaEntidades.consultaEntidadesAction">
+			<result>/consultaEntidades.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- Registro Movimiento Vehiculos-->
+		<action name="RegistroMovVeh"
+			class="es.induserco.opilion.presentacion.registros.RegistroMovVehAction">
+			<result>registroentrada/registroMovVeh.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="InsertarRegistroMovVeh"
+			class="es.induserco.opilion.presentacion.registros.InsertarRegistroMovVehAction">
+			<result>pagEscritorio.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ReporteVehiculo"
+			class="es.induserco.opilion.presentacion.ubicacion.ReporteVehiculoAction">
+			<result name="success" type="jasper">
+            	<param name="location">${url}</param>
+            	<param name="dataSource">vehiculo</param>
+            	<param name="format">PDF</param>
+        	</result>
+		</action>
+		<action name="ReporteVehiculoLanzadera"
+			class="es.induserco.opilion.presentacion.ubicacion.ReporteVehiculoLanzaderaAction">
+			<result name="success" type="jasper">
+            	<param name="location">${url}</param>
+            	<param name="dataSource">vehiculo</param>
+            	<param name="format">PDF</param>
+        	</result>
+		</action>
+		<action name="ReporteLanzaderaComercial"
+			class="es.induserco.opilion.presentacion.registros.ReporteLanzaderaComercialAction">
+			<!-- <result name="success" type="jasper">
+            	<param name="location">${url}</param>
+            	<param name="dataSource">comercial</param>
+            	<param name="format">PDF</param>
+        	</result> -->
+        	<result>registrosalida/lanzaderaComercialAjax.jsp</result>
+			<result name="ERROR">error.jsp</result>
+		</action>
+		<action name="ComprobarLanzaderaVacia" class="es.induserco.opilion.presentacion.ubicacion.ComprobarLanzaderaVaciaAction">
+			<result>ubicacion/lanzaderaComprobarProductosAjax.jsp</result>
+			<result name="ERROR">error.jsp</result>
+		</action>
+		<action name="ListaLanzaderas" class="es.induserco.opilion.presentacion.ubicacion.ListaLanzaderasAction">
+			<result>ubicacion/listaLanzaderas.jsp</result>
+			<result name="ERROR">error.jsp</result>
+		</action>
+		<!-- REPORTES -->
+		<action name="ReporteAlbaranesMesPasado"
+			class="es.induserco.opilion.presentacion.reportes.ReporteAlbaranesMesPasadoAction">
+			<result name="success" type="jasper">
+            	<param name="location">${url}</param>
+            	<param name="connection">conn</param>
+				<param name="format">PDF</param>
+				<param name="reportParameters">reportParams</param>
+			</result>
+		</action>
+		<action name="ReporteAlbaranesClientes"
+			class="es.induserco.opilion.presentacion.reportes.ReporteAlbaranesClientesAction">
+			<result name="success" type="jasper">
+            	<param name="location">${url}</param>
+            	<param name="connection">conn</param>
+				<param name="format">PDF</param>
+				<param name="reportParameters">reportParams</param>
+			</result>
+		</action>
+		<!-- END REPORTES -->
+		<!-- MODULO ORDENES DE ENTRADA-->
+		<action name="NuevaOE"
+			class="es.induserco.opilion.presentacion.registroentrada.NuevaOEAction">
+			<result>registroentrada/nuevaOE.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="NuevaOETmp"
+			class="es.induserco.opilion.presentacion.registroentrada.NuevaOETmpAction">
+			<result>registroentrada/nuevaOETmp.jsp</result>
+			<!-- <result name="input">registroentrada/nuevaOETmp.jsp</result> -->
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="Nueva2OETmp"
+			class="es.induserco.opilion.presentacion.registroentrada.Nueva2OETmpAction">
+			<result>registroentrada/nuevaOETmp.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="InseRETmp"
+			class="es.induserco.opilion.presentacion.registroentrada.InseRETmpAction">
+			<!-- <result name="barcia" type="chain">BarciaZona</result> -->
+			<!-- <result name="naveantigua" type="chain">NaveAntiguaZona</result>
+			<result name="operadorlogico" type="chain">OperadorLogicoZona</result>
+			<result name="autoventa" type="chain">AutoventaZona</result> -->
+			<result name="redirect" type="redirectAction">
+					<param name="actionName">${url}</param>
+			</result>
+			<!-- <result name="redirect" type="redirect">${url}</result>  -->
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="UbicarPalet"
+			class="es.induserco.opilion.presentacion.ubicacion.UbicarPaletAction">
+			<result name="redirect" type="redirectAction">
+					<param name="actionName">${url}</param>
+			</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="SacarUbicacion"
+			class="es.induserco.opilion.presentacion.ubicacion.SacarUbicacionAction">
+			<result name="redirect" type="redirectAction">
+					<param name="actionName">${url}</param>
+			</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="SeleccionAlmacen"
+			class="es.induserco.opilion.presentacion.ubicacion.SeleccionAlmacenAction">
+			<result>ubicacion/seleccionAlmacen.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="MostrarAlmacen"
+			class="es.induserco.opilion.presentacion.ubicacion.MostrarAlmacenAction">
+			<result>ubicacion/seleccionAlmacen.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="UbicarProceso"
+			class="es.induserco.opilion.presentacion.ubicacion.UbicarProcesoAction">
+			<result>ubicacion/ubicarProceso.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="Reubicar"
+			class="es.induserco.opilion.presentacion.ubicacion.ReubicarAction">
+			<!-- <result name="redirect" type="redirectAction">
+					<param name="actionName">SeleccionAlmacen</param>
+			</result> -->
+			<result name="redirect" type="chain">SeleccionAlmacen</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="BarciaZona"
+			class="es.induserco.opilion.presentacion.ubicacion.BarciaZonaAction">
+			<result>ubicacion/barciaPlanoBase_.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="UbicacionBarcia"
+			class="es.induserco.opilion.presentacion.ubicacion.UbicacionBarciaAction">
+			<result>ubicacion/barciaPlanoBase_.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="UbicacionVehiculo"
+			class="es.induserco.opilion.presentacion.ubicacion.UbicacionVehiculoAction">
+			<result>ubicacion/ubicacionVehiculo.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="SacarUbicacionBarcia"
+			class="es.induserco.opilion.presentacion.ubicacion.SacarUbicacionBarciaAction">
+			<!-- <result>ubicacion/sacarBarciaPlanoBase_.jsp</result> -->
+			<result>ubicacion/barciaPlanoBase_.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="CargaMapaAlmacen"
+			class="es.induserco.opilion.presentacion.ubicacion.CargaMapaAlmacenAction">
+			<result>${url}</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="PreviaRegistroOETmp"
+			class="es.induserco.opilion.presentacion.registroentrada.Nueva2OEAction">
+			<result>registroentrada/nueva2OE.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="PreviaRegistroOE"
+			class="es.induserco.opilion.presentacion.registroentrada.EtiquetasREAction">
+			<result>registroentrada/etiquetasRE.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="EditOE"
+			class="es.induserco.opilion.presentacion.registroentrada.EditOEAction">
+			<result>registroentrada/verOE.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="InseOE"
+			class="es.induserco.opilion.presentacion.registroentrada.InseOEAction">
+			<result name="redirect" type="redirect">${url}</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="UpdateOE"
+			class="es.induserco.opilion.presentacion.registroentrada.UpdateOEAction">
+			<result type="chain">FiltOE</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="FiltOE"
+			class="es.induserco.opilion.presentacion.registroentrada.FiltOEAction">
+			<result>registroentrada/consOE.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ConsOE"
+			class="es.induserco.opilion.presentacion.registroentrada.ConsOEAction">
+			<result>registroentrada/consOE.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="VerOE"
+			class="es.induserco.opilion.presentacion.registroentrada.VerOEAction">
+			<result>registroentrada/verOE.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- Registros de entrada-->
+		<action name="NewRE"
+			class="es.induserco.opilion.presentacion.registroentrada.NewREAction">
+			<result>registroentrada/newRE.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="InseRE"
+			class="es.induserco.opilion.presentacion.registroentrada.InseREAction">
+			<!-- <result type="chain">RegistroUbicacionEntrada</result> -->
+			<result type="chain">PreviaRegistroOETmp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- ubicacion entrada-->
+		<action name="InseRUETmp"
+			class="es.induserco.opilion.presentacion.registroentrada.InseRUETmpAction">
+			<result type="chain">PreviaRegistroOETmp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="InseRUE"
+			class="es.induserco.opilion.presentacion.registroentrada.InseRUEAction">
+			<result>ubicacion/registroUbicacionEntrada.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="EditRE"
+			class="es.induserco.opilion.presentacion.registroentrada.EditREAction">
+			<result>registroentrada/editRE.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="EditRETmp"
+			class="es.induserco.opilion.presentacion.registroentrada.EditRETmpAction">
+			<result>registroentrada/editRETmp.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="UpdaRE"
+			class="es.induserco.opilion.presentacion.registroentrada.UpdaREAction">
+			<result type="chain">ConsRE</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="UpdaRETmp"
+			class="es.induserco.opilion.presentacion.registroentrada.UpdaRETmpAction">
+			<result>registroentrada/nueva2OE.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+        <action name="LoadRE"
+			class="es.induserco.opilion.presentacion.registroentrada.LoadREAction">
+			<result>registroentrada/loadRE.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="LoadRETmp"
+			class="es.induserco.opilion.presentacion.registroentrada.LoadRETmpAction">
+			<result>registroentrada/loadRETmp.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="DeleRE"
+			class="es.induserco.opilion.presentacion.registroentrada.DeleREAction">
+			<result>registroentrada/consRE.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="DeleRETmp"
+			class="es.induserco.opilion.presentacion.registroentrada.DeleRETmpAction">
+			<result>registroentrada/nueva2OE.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="FiltRE"
+			class="es.induserco.opilion.presentacion.registroentrada.FiltREAction">
+			<result>registroentrada/consRE.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ConsRE"
+			class="es.induserco.opilion.presentacion.registroentrada.ConsREAction">
+			<result>registroentrada/consRE.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ConfirmarRegistroEntrada"
+			class="es.induserco.opilion.presentacion.confirmacionprocesos.ConfirmarRegistroEntradaAction">
+			<result>registroentrada/confirmarRegistroEntrada.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+
+		<!--  GESTION DE BULTOS -->
+		<action name="BultosRE"
+			class="es.induserco.opilion.presentacion.registroentrada.BultosREAction">
+			<result>registroentrada/bultosRE.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="addBultosRE"
+			class="es.induserco.opilion.presentacion.registroentrada.AgregaBultosREAction">
+			<result>registroentrada/bultosRE.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="AgregaBultoRE"
+			class="es.induserco.opilion.presentacion.registroentrada.AgregaBultoREAction">
+			<result>registroentrada/bultosRE.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="UpdateBultoRE"
+			class="es.induserco.opilion.presentacion.registroentrada.UpdateBultoREAction">
+			<result>registroentrada/bultosRE.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="EtiquetaBultoRE"
+			class="es.induserco.opilion.presentacion.registroentrada.EtiquetaBultoREAction">
+			<result name="success" type="jasper">
+            	<!--param name="location">/reportes/entradas/EtiqREBJR.jasper</param-->
+            	<param name="location">/reportes/entradas/EtiqREB2JR.jasper</param>
+            	<param name="dataSource">re</param>
+            	<param name="format">PDF</param>
+        	</result>
+		</action>
+		<!-- Registros de salida-->
+		<action name="IngresarRegistroSalida"
+			class="es.induserco.opilion.presentacion.registros.IngresarRegistroSalidaAction">
+			<result>RegistroMovVeh</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- PEDIDOS -->
+		<action name="NuevoPedido"
+			class="es.induserco.opilion.presentacion.registros.NuevoPedidoAction">
+			<result>registrosalida/nuevoPedido.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ConsPedidos"
+			class="es.induserco.opilion.presentacion.registros.ConsPedidosAction">
+			<result>registrosalida/consPedidos.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- Albaran Simple-->
+			<!-- Nuevo albaran simple-->
+			<action name="NuevoAlba"
+				class="es.induserco.opilion.presentacion.registros.NuevoAlbaAction">
+				<result>registrosalida/detaRegiAlba.jsp</result>
+				<result name="error">/error.jsp</result>
+			</action>
+			<!-- Insertar albaran simple-->
+			<action name="InseDetaAlba"
+				class="es.induserco.opilion.presentacion.registros.InseDetaAlbaAction">
+				<result name="redirect" type="redirectAction">
+					<param name="actionName">EditDetaFact</param>
+				</result>
+				<result type="chain">EditDetaFact</result>
+				<result name="error">/error.jsp</result>
+			</action>
+			<!-- Filtro para RE disponibles-->
+			<action name="FiltRegiEN"
+				class="es.induserco.opilion.presentacion.registros.FiltRegiENAction">
+				<result>registrosalida/consRegiEN.jsp</result>
+				<result name="error">/error.jsp</result>
+			</action>
+			<!-- Ejecuta consulta de RE disponibles-->
+			<action name="ConsRegiEN"
+				class="es.induserco.opilion.presentacion.registros.ConsRegiENAction">
+				<result>registrosalida/consRegiEN.jsp</result>
+				<result name="error">/error.jsp</result>
+			</action>
+			<!-- Crea un Registro de Salida asociado a un albaran-->
+			<action name="EditCantEN"
+				class="es.induserco.opilion.presentacion.registros.EditCantENAction">
+				<result>registrosalida/detaRegiEN.jsp</result>
+				<result name="error">/error.jsp</result>
+			</action>
+			<!-- Inserta un Registro de Salida-->
+			<action name="InseCantEN"
+				class="es.induserco.opilion.presentacion.registros.InseCantENAction">
+				<result name="redirect" type="redirectAction">
+					<param name="actionName">EditDetaAlbaOrden</param>
+				</result>
+				<result type="chain">EditDetaAlba</result>
+				<result name="error">/error.jsp</result>
+			</action>
+			<!-- CRUD RS -->
+			<action name="EditRS"
+				class="es.induserco.opilion.presentacion.registros.EditRSAction">
+				<result>registrosalida/editRS.jsp</result>
+				<result name="error">/error.jsp</result>
+			</action>
+			<action name="UpdaRS"
+				class="es.induserco.opilion.presentacion.registros.UpdaRSAction">
+				<result>registrosalida/detaRegiAlba.jsp</result>
+				<result name="error">/error.jsp</result>
+			</action>
+			<action name="DeleteRegistroSalida"
+				class="es.induserco.opilion.presentacion.registros.RegistroSalidaDeleteAction">
+				<!-- <result>registrosalida/deleRS.jsp</result> -->
+				<result type="chain">EditDetaAlba</result>
+				<result name="error">/error.jsp</result>
+			</action>
+			<action name="EliminarRegistroSalida"
+				class="es.induserco.opilion.presentacion.registros.EliminarRegistroSalidaAction">
+				<result>registrosalida/deleRS.jsp</result>
+				<result name="error">/error.jsp</result>
+			</action>
+			<action name="ProcesarPedido"
+				class="es.induserco.opilion.presentacion.registros.ProcesarPedidoAction">
+				<result name="success" type="chain">EditDetaAlbaOrden</result>
+				<result name="faltaStock">registrosalida/faltaStock.jsp</result>
+				<result name="error">edifact/edifactError.jsp</result>
+			</action>
+			<action name="ProgramarEnvasado"
+				class="es.induserco.opilion.presentacion.registros.ProgramarEnvasadoAction">
+				<!-- <result name="success" type="redirectAction">
+					<param name="actionName">OrdenEnvaAuto</param>
+				</result>  -->
+				<result name="success" type="chain">OrdenEnvaAuto</result>
+				<result name="faltaStock">registrosalida/muestraFalta.jsp</result>
+				<result name="error">edifact/edifactError.jsp</result>
+			</action>
+		<!-- Albaran EDI-->
+		<action name="EditDetaAlbaOrden"
+			class="es.induserco.opilion.presentacion.registros.EditDetaAlbaOrdenAction">
+			<result>registrosalida/detaRegiAlbaOrden.jsp</result>
+			<result name="error">edifact/edifactError.jsp</result>
+		</action>
+		<action name="InseDetaAlbaOrden"
+			class="es.induserco.opilion.presentacion.registros.InseDetaAlbaOrdenAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">ConsAlba</param>
+			</result>
+			<result name="ERROR_LECTURA">registrosalida/errorLecturaLotes.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ConsAlbaOrdenJR" class="es.induserco.opilion.presentacion.registros.ConsAlbaOrdenJRAction">
+			<result name="success" type="jasper">
+            	<param name="location">${url}</param>
+            	<param name="dataSource">albaran</param>
+				<param name="format">PDF</param>
+			</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ConsOrders"
+			class="es.induserco.edifact.presentacion.orders.ConsOrdersAction">
+			<result>edifact/listaorder.jsp</result>
+			<result name="error">edifact/edifactError.jsp</result>
+		</action>
+		<!-- Consulta RE asociados al EAN seleccionado-->
+		<action name="ConsRegiENEan"
+			class="es.induserco.opilion.presentacion.registros.ConsRegiENEanAction">
+			<result>registrosalida/consRegiENEan.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- Consulta Albaranes-->
+		<action name="FiltAlba"
+			class="es.induserco.opilion.presentacion.registros.FiltAlbaAction">
+			<result>registrosalida/consRegiAlba.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ConsAlba"
+			class="es.induserco.opilion.presentacion.registros.ConsAlbaAction">
+			<result>registrosalida/consRegiAlba.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="FactAlb" class="es.induserco.opilion.presentacion.registroentrada.ConsREJRAction">
+       		<result name="success" type="jasper">
+            	<param name="location">reportes/REntrada.jasper</param>
+            	<param name="dataSource">re</param>
+            	<param name="format">PDF</param>
+        	</result>
+		</action>
+		<!-- Facturas-->
+		<action name="InseAlbaCreaFact"
+			class="es.induserco.opilion.presentacion.registros.InseAlbaCreaFactAction">
+			<result>registrosalida/detaRegiFact.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="EditDetaFact"
+			class="es.induserco.opilion.presentacion.registros.EditDetaFactAction">
+			<result>registrosalida/detaRegiFact.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+			<action name="EditCargFact"
+				class="es.induserco.opilion.presentacion.registros.EditDetaFactAction">
+				<result>registrosalida/editCargFact.jsp</result>
+				<result name="error">/error.jsp</result>
+			</action>
+			<action name="InseCargFact"
+				class="es.induserco.opilion.presentacion.registros.InseCargFactAction">
+				<result>registrosalida/detaRegiFact.jsp</result>
+				<result name="error">/error.jsp</result>
+			</action>
+		<action name="InseDetaFact"
+			class="es.induserco.opilion.presentacion.registros.InseDetaFactAction">
+        	<!-- <result type="chain">ConsFact</result> -->
+        	<result type="redirectAction">
+					<param name="actionName">ConsFact</param>
+			</result>
+			<!-- <result type="chain">ConsFactJR</result> -->
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- Reporte JR Factura-->
+		<action name="ConsFactJR" class="es.induserco.opilion.presentacion.registros.ConsFactJRAction">
+       		<result name="success" type="jasper">
+            	<param name="location">${url}</param>
+            	<param name="dataSource">factura</param>
+            	<param name="format">PDF</param>
+        	</result>
+        	<result name="error">/error.jsp</result>
+		</action>
+		<!-- Consulta Facturas-->
+		<action name="FiltFact"
+			class="es.induserco.opilion.presentacion.registros.FiltFactAction">
+			<result>registrosalida/consRegiFact.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ConsFact"
+			class="es.induserco.opilion.presentacion.registros.ConsFactAction">
+			<result>registrosalida/consRegiFact.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ConfirmarRegistroSalida"
+			class="es.induserco.opilion.presentacion.confirmacionprocesos.ConfirmarRegistroSalidaAction">
+			<result>registrosalida/confirmarRegistroSalida.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="RegistroMovimientoAlmacen"
+			class="es.induserco.opilion.presentacion.registros.RegistroMovimientoAlmacenAction">
+			<!-- result name="input">/registroMovimientoAlmacen.jsp</result-->
+			<!-- result type="redirectAction">Contador</result-->
+			<result>/prueba.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- Registros de Proveedor-->
+		<action name="GestionProveedor"
+			class="es.induserco.opilion.presentacion.proveedor.GestionProveedorAction">
+			<!-- result name="input">/gestionProveedor.jsp</result-->
+			<!-- result type="redirectAction">Contador</result-->
+			<result>proveedor/registroProveedor.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="RegistroProveedor"
+			class="es.induserco.opilion.presentacion.proveedor.RegistroProveedorAction">
+			<result>proveedor/registroProveedor.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="RegistroProveedorAuxiliar"
+			class="es.induserco.opilion.presentacion.proveedor.RegistroProveedorAction">
+			<result>proveedor/registroProveedorAuxiliar.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="IngresarRegistroProveedorAuxiliar"
+			class="es.induserco.opilion.presentacion.proveedor.IngresarRegistroProveedorAction">
+			<result>proveedor/registroProveedorAuxiliar.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="IngresarRegistroAlmacen"
+			class="es.induserco.opilion.presentacion.ubicacion.IngresarRegistroAlmacenAction">
+			<result name="success">vacio.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="IngresarRegistroProveedor"
+			class="es.induserco.opilion.presentacion.proveedor.IngresarRegistroProveedorAction">
+			<result name="input">proveedor/registroProveedor.jsp</result>
+			<result name="success" type="chain">ConsultaProveedores</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ConsultaProveedores"
+			class="es.induserco.opilion.presentacion.proveedor.ConsultaProveedoresAction">
+			<result>proveedor/consultaProveedores.jsp</result>
+			<!-- <result>proveedor/proveedorPrincipal.jsp</result> -->
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="FiltroProveedores"
+			class="es.induserco.opilion.presentacion.proveedor.FiltroProveedoresAction">
+			<result>proveedor/filtroProveedores.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="CargarProveedor"
+			class="es.induserco.opilion.presentacion.proveedor.CargarProveedorAction">
+			<result>proveedor/actualizarProveedor.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="UpdateProveedor"
+			class="es.induserco.opilion.presentacion.proveedor.ActualizarProveedorAction">
+			<result type="redirectAction">
+					<param name="actionName">ConsultaProveedores</param>
+			</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- Registros de Registro Cliente-->
+		<action name="IngresarRegistroCliente"
+			class="es.induserco.opilion.presentacion.cliente.IngresaClienteAction">
+			<result name="SUCCESS" type="redirectAction">
+					<param name="actionName">ConsultaClientes</param>
+			</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="RegistroCliente"
+			class="es.induserco.opilion.presentacion.cliente.RegistroClienteAction">
+			<result>cliente/registroCliente.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="RegistroSector"
+			class="es.induserco.opilion.presentacion.cliente.RegistroSectorAction">
+			<result>cliente/registroSector.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="RegistroBanco"
+			class="es.induserco.opilion.presentacion.cliente.RegistroBancoAction">
+			<!-- <result>cliente/registroBanco.jsp</result> -->
+			<result>registrado.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="RegistroFormaPago"
+			class="es.induserco.opilion.presentacion.cliente.RegistroFormaPagoAction">
+			<result>cliente/registroFormaPago.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="IngresarRegistroSector"
+			class="es.induserco.opilion.presentacion.cliente.IngresarRegistroSectorAction">
+			<result type="chain">Inicio</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="IngresarRegistroBanco"
+			class="es.induserco.opilion.presentacion.cliente.IngresarRegistroBancoAction">
+			<result>vacio.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="IngresarRegistroFormaPago"
+			class="es.induserco.opilion.presentacion.cliente.IngresarRegistroFormaPagoAction">
+			<result>vacio.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="CargarCliente"
+			class="es.induserco.opilion.presentacion.cliente.CargarClienteAction">
+			<result>cliente/actualizarCliente.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ActualizarCliente"
+			class="es.induserco.opilion.presentacion.cliente.ActualizarClienteAction">
+			<result type="redirectAction">
+					<param name="actionName">ConsultaClientes</param>
+			</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ConsultaClientes"
+			class="es.induserco.opilion.presentacion.cliente.ConsultaClientesAction">
+			<result>cliente/consultaClientes.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="FiltroClientes"
+			class="es.induserco.opilion.presentacion.cliente.FiltroClientesAction">
+			<result>cliente/filtroClientes.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="EliminarEntidad"
+			class="es.induserco.opilion.presentacion.cliente.EliminarEntidadAction">
+			<result name="redirect" type="redirectAction">
+					<param name="actionName">${url}</param>
+			</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="DeshabilitarEntidad"
+			class="es.induserco.opilion.presentacion.cliente.DeshabilitarEntidadAction">
+			<result>pagEscritorio.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- Registros de Registro Producto-->
+		<action name="RegistroProducto"
+			class="es.induserco.opilion.presentacion.producto.RegistroProductoAction">
+			<result>producto/altaProducto.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="IngresarRegistroProducto"
+			class="es.induserco.opilion.presentacion.producto.IngresarRegistroProductoAction">
+			<result>producto/altaProducto.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="EliminarProducto"
+			class="es.induserco.opilion.presentacion.producto.EliminarProductoAction">
+			<result>pagEscritorio.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ActualizaProducto"
+			class="es.induserco.opilion.presentacion.producto.ActualizarProductoAction">
+			<result>producto/actualizarProducto.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- Materias primas -->
+		<action name="RegistroMateriaPrima"
+			class="es.induserco.opilion.presentacion.producto.RegistroMateriaPrimaAction">
+			<result>materiaprima/registroMateriaPrima.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="IngresarRegistroMateriaPrima"
+			class="es.induserco.opilion.presentacion.producto.IngresarRegistroMateriaPrimaAction">
+			<result>materiaprima/registroMateriaPrima.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="CargarMP"
+			class="es.induserco.opilion.presentacion.producto.CargarMPAction">
+			<result>materiaprima/actualizaMateriaPrima.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ActualizarMateriaPrima"
+			class="es.induserco.opilion.presentacion.producto.ActualizarMateriaPrimaAction">
+			<result type="chain">FiltroIngredientes</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- Envases-->
+		<action name="RegistroEnvase"
+			class="es.induserco.opilion.presentacion.envase.RegistroEnvaseAction">
+			<result>envase/registroEnvase.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="IngresarRegistroEnvase"
+			class="es.induserco.opilion.presentacion.envase.IngresarRegistroEnvaseAction">
+			<result>envase/registroEnvase.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="EliminarEnvase"
+			class="es.induserco.opilion.presentacion.envase.EliminarEnvaseAction">
+			<result>pagEscritorio.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="FiltroEnvases"
+			class="es.induserco.opilion.presentacion.envase.FiltroEnvaseAction">
+			<result>envase/filtroEnvase.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ConsultaEnvase"
+			class="es.induserco.opilion.presentacion.envase.ConsultaEnvaseAction">
+			<result>envase/consultaEnvase.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="FiltroIngredientes"
+			class="es.induserco.opilion.presentacion.producto.FiltroIngredientesAction">
+			<result>materiaprima/filtroIngrediente.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ConsultaIngrediente"
+			class="es.induserco.opilion.presentacion.producto.ConsultaIngredienteAction">
+			<result>materiaprima/consultaIngrediente.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="CategoriasMPAjax"
+			class="es.induserco.opilion.presentacion.producto.CategoriasMPAjaxAction">
+			<result>registroentrada/nuevaOETmpAjax.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="CargarEnvase"
+			class="es.induserco.opilion.presentacion.envase.CargarEnvaseAction">
+			<result>envase/actualizarEnvase.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ActualizaEnvase"
+			class="es.induserco.opilion.presentacion.envase.ActualizarEnvaseAction">
+			<result type="chain">FiltroEnvases</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- Registros de congelado-->
+		<action name="FiltGPCong"
+			class="es.induserco.opilion.presentacion.consultaGestionProduccion.FiltGPCongAction">
+			<result>gpcongelado/consGPCong.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ConsGPCong"
+			class="es.induserco.opilion.presentacion.consultaGestionProduccion.ConsGPCongAction">
+			<result>gpcongelado/consGPCong.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ConfirmarRegistroCongelado"
+			class="es.induserco.opilion.presentacion.confirmacionprocesos.ConfirmarRegistroCongeladoAction">
+			<result>gpcongelado/confirmarRegistroCongelado.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- PROCESO DE CONGELACION -->
+		<!-- 1. Filtro de RE para Congelación -->
+		<action name="FiltRECong"
+			class="es.induserco.opilion.presentacion.gestionProduccionCongelado.FiltRECongAction">
+			<result>gpcongelado/consRECong.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- 2. Resultado del filtro de la consulta para congelados -->
+		<action name="ConsRECong"
+			class="es.induserco.opilion.presentacion.gestionProduccionCongelado.ConsRECongAction">
+			<result>gpcongelado/consRECong.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- 3. Inserta a la tabla -->
+		<action name="InseRECong"
+			class="es.induserco.opilion.presentacion.gestionProduccionCongelado.InseRECongAction">
+			<result>gpcongelado/editCantCong.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- 4. Actualiza cantidades a usar -->
+		<action name="UpdaRECongCant"
+			class="es.induserco.opilion.presentacion.gestionProduccionCongelado.UpdaRECongCantAction">
+			<result type="chain">ConfGPCong</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- 5.- Invoca al Detalle final del proceso de Congelado para confirmar-->
+		<action name="ConfGPCong"
+			class="es.induserco.opilion.presentacion.gestionProduccionCongelado.ConfGPCongAction">
+			<result>gpcongelado/detaGPCong.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- 6.- Inserta los detalles finales del congelado y actualiza saldos-->
+		<action name="InseGPCong"
+			class="es.induserco.opilion.presentacion.gestionProduccionCongelado.InseGPCongAction">
+			<result name="redirect" type="redirectAction">
+					<param name="actionName">${url}</param>
+			</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- PROCESO DE FUMIGADO -->
+		<!-- 1. Filtro de RE para Fumigación -->
+		<action name="FiltREFumi"
+			class="es.induserco.opilion.presentacion.gestionProduccionFumigado.FiltREFumiAction">
+			<result>gpfumigado/consREFumi.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- 2. Resultado del filtro de la consulta para Fumigación -->
+		<action name="ConsREFumi"
+			class="es.induserco.opilion.presentacion.gestionProduccionFumigado.ConsREFumiAction">
+			<result>gpfumigado/consREFumi.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- 3. Inserta a la tabla -->
+		<action name="InseREFumi"
+			class="es.induserco.opilion.presentacion.gestionProduccionFumigado.InseREFumiAction">
+			<result>gpfumigado/editCantFumi.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- 4. Actualiza cantidades a usar -->
+		<action name="UpdaREFumiCant"
+			class="es.induserco.opilion.presentacion.gestionProduccionFumigado.UpdaREFumiCantAction">
+			<result type="chain">ConfGPFumi</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- 5.- Invoca al Detalle final del proceso de Fumigación para confirmar-->
+		<action name="ConfGPFumi"
+			class="es.induserco.opilion.presentacion.gestionProduccionFumigado.ConfGPFumiAction">
+			<result>gpfumigado/detaGPFumi.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- 6.- Inserta los detalles finales del Fumigación y actualiza saldos-->
+		<action name="InseGPFumi"
+			class="es.induserco.opilion.presentacion.gestionProduccionFumigado.InseGPFumiAction">
+			<result name="redirect" type="redirectAction">
+					<param name="actionName">${url}</param>
+			</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- Registros de fumigado-->
+		<action name="FiltGPFumi"
+			class="es.induserco.opilion.presentacion.consultaGestionProduccion.FiltGPFumiAction">
+			<result>gpfumigado/consGPFumi.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ConsGPFumi"
+			class="es.induserco.opilion.presentacion.consultaGestionProduccion.ConsGPFumiAction">
+			<result>gpfumigado/consGPFumi.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ConfirmarRegistroFumigado"
+			class="es.induserco.opilion.presentacion.confirmacionprocesos.ConfirmarRegistroFumigadoAction">
+			<result>/confirmarRegistroFumigado.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- Registros de mermas produccion-->
+		<action name="ConsultaMermasProduccion"
+			class="es.induserco.opilion.presentacion.consultaGestionProduccion.ConsultaMerProduccionAction">
+			<result>/consultaMermasProduccion.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ConsultaMermas"
+			class="es.induserco.opilion.presentacion.consultaGestionProduccion.ConsultaMermasProduccionAction">
+			<result>/consultaMermasProduccion.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- Registros de Ubicaciones-->
+		<action name="IngresarUbicacion"
+			class="es.induserco.opilion.presentacion.ubicacion.IngresarUbicacionAction">
+			<result>ubicacion/registroUbicacion.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="GuardarUbicacion"
+			class="es.induserco.opilion.presentacion.ubicacion.GuardarUbicacionAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">PreviaRegistroOETmp</param>
+			</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="RegistroUbicacion"
+			class="es.induserco.opilion.presentacion.ubicacion.RegistroUbicacionAction">
+			<result>ubicacion/registroUbicacion.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="FiltroUbicaciones"
+			class="es.induserco.opilion.presentacion.ubicacion.FiltroUbicacionesAction">
+			<result>ubicacion/consultaUbicacion.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="CargarUbicacion"
+			class="es.induserco.opilion.presentacion.ubicacion.CargarUbicacionAction">
+			<result>ubicacion/actualizarUbicacion.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ActualizarUbicacion"
+			class="es.induserco.opilion.presentacion.ubicacion.ActualizarUbicacionAction">
+			<result>ubicacion/actualizarUbicacion.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ConsultaUbicacion"
+			class="es.induserco.opilion.presentacion.ubicacion.ConsultaUbicacionAction">
+			<result>ubicacion/consultaUbicacion.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ConsMermas"
+			class="es.induserco.opilion.presentacion.ubicacion.ConsMermasAction">
+			<result>ubicacion/consultaIncidencias.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- RegistroUbicacionEntrada-->
+		<action name="RegistroUbicacionEntrada"
+			class="es.induserco.opilion.presentacion.ubicacion.RegistroUbicacionEntradaAction">
+			<result>ubicacion/registroUbicacionEntrada.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- Analisis Calidad-->
+		<action name="CaliRE"
+			class="es.induserco.opilion.presentacion.registroentrada.CaliREAction">
+			<result>registroentrada/caliRE.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="CalcCaliRE"
+			class="es.induserco.opilion.presentacion.registroentrada.CalcCaliREAction">
+			<result>registroentrada/caliRE.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- Registros de Sub Entrada-->
+		<action name="NewRSE"
+			class="es.induserco.opilion.presentacion.registroentrada.NewRSEAction">
+			<result>registroentrada/newRSE.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="InseRSE"
+			class="es.induserco.opilion.presentacion.registroentrada.InseRSEAction">
+			<result>registroentrada/newRSE.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- Control Mermas-->
+		<action name="ControlMermas"
+			class="es.induserco.opilion.presentacion.merma.RegistroControlMermaAction">
+			<result>/registroControlMermas.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="IngresarMerma"
+			class="es.induserco.opilion.presentacion.merma.IngresarControlMermaAction">
+			<result>/pagEscritorio.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- PROCESO DE SELECCION MANUAL-->
+		<!-- 1. Filtro para consultar el tipo de los RE para Seleccion -->
+		<action name="FiltRESele"
+			class="es.induserco.opilion.presentacion.gestionProduccionSeleccion.FiltRESeleAction">
+			<result>gpseleccion/consRESele.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- 2. Carga la consulta de los RE -->
+		<action name="ConsRESele"
+			class="es.induserco.opilion.presentacion.gestionProduccionSeleccion.ConsRESeleAction">
+			<result>gpseleccion/consRESele.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- 3. Indicar Cantidad que se va a Seleccionar -->
+		<action name="RegiGPSele"
+			class="es.induserco.opilion.presentacion.gestionProduccionSeleccion.RegiGPSeleAction">
+			<result>gpseleccion/regiGPSele.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- 4. Insertar GP y los subregistros generados -->
+		<action name="InseRESele"
+			class="es.induserco.opilion.presentacion.gestionProduccionSeleccion.InseRESeleAction">
+			<!-- <result type="chain">ConsRESele</result> -->
+			<result name="redirect" type="redirectAction">
+					<param name="actionName">${url}</param>
+			</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="FiltGPSele"
+			class="es.induserco.opilion.presentacion.consultaGestionProduccion.FiltGPSeleAction">
+			<result>gpseleccion/consGPSele.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ConsGPSele"
+			class="es.induserco.opilion.presentacion.consultaGestionProduccion.ConsGPSeleAction">
+			<result>gpseleccion/consGPSele.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- PROCESO DE CRIBADO -->
+		<!-- 1. Filtro para consultar el tipo de los RE para Cribado -->
+		<action name="FiltRECrib"
+			class="es.induserco.opilion.presentacion.gestionProduccionCribado.FiltRECribAction">
+			<result>gpcribado/consRECrib.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- 2. Carga la consulta de los RE -->
+		<action name="ConsRECrib"
+			class="es.induserco.opilion.presentacion.gestionProduccionCribado.ConsRECribAction">
+			<result>gpcribado/consRECrib.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- 3. Indicar Cantidad que se va a cribar -->
+		<action name="RegiGPCrib"
+			class="es.induserco.opilion.presentacion.gestionProduccionCribado.RegiGPCribAction">
+			<result>gpcribado/regiGPCrib.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- 4. Insertar GP y los subregistros generados -->
+		<action name="InseRECrib"
+			class="es.induserco.opilion.presentacion.gestionProduccionCribado.InseRECribAction">
+			<result name="redirect" type="redirectAction">
+					<param name="actionName">${url}</param>
+			</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="FiltGPCrib"
+			class="es.induserco.opilion.presentacion.consultaGestionProduccion.FiltGPCribAction">
+			<result>gpcribado/consGPCrib.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ConsGPCrib"
+			class="es.induserco.opilion.presentacion.consultaGestionProduccion.ConsGPCribAction">
+			<result>gpcribado/consGPCrib.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- PROCESO DE DESGRANADO -->
+		<!-- 1. Filtro para consultar el tipo de los RE para Desgranado -->
+		<action name="FiltREDesg"
+			class="es.induserco.opilion.presentacion.gestionProduccionDesgranado.FiltREDesgAction">
+			<result>gpdesgranado/consREDesg.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- 2. Carga la consulta de los RE -->
+		<action name="ConsREDesg"
+			class="es.induserco.opilion.presentacion.gestionProduccionDesgranado.ConsREDesgAction">
+			<result>gpdesgranado/consREDesg.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- 3. Indicar Cantidad que se va a cribar -->
+		<action name="RegiGPDesg"
+			class="es.induserco.opilion.presentacion.gestionProduccionDesgranado.RegiGPDesgAction">
+			<result>gpdesgranado/regiGPDesg.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- 4. Insertar GP y los subregistros generados -->
+		<action name="InseREDesg"
+			class="es.induserco.opilion.presentacion.gestionProduccionDesgranado.InseREDesgAction">
+			<result name="redirect" type="redirectAction">
+					<param name="actionName">${url}</param>
+			</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="FiltGPDesg"
+			class="es.induserco.opilion.presentacion.consultaGestionProduccion.FiltGPDesgAction">
+			<result>gpdesgranado/consGPDesg.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ConsGPDesg"
+			class="es.induserco.opilion.presentacion.consultaGestionProduccion.ConsGPDesgAction">
+			<result>gpdesgranado/consGPDesg.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- PROCESO DE ENVASADO-->
+		<!-- Elimina: Quita el proceso de pendientes y devuelve el stock bloquedado -->
+		<action name="CancelPendingEnv"
+			class="es.induserco.opilion.presentacion.gestionProduccionEnvasado.CancelPendingEnvAction">
+			<result>gpenvasado/consProdFina.jsp</result>
+			<!-- <result name="redirecciona" type="redirect">${url}</result> -->
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- Elimina: Quita el proceso de pendientes y devuelve el stock bloquedado -->
+		<action name="CancelaPendiente"
+			class="es.induserco.opilion.presentacion.gestionProduccionEnvasado.CancelaPendienteAction">
+			<result type="chain">ListaEnvasar</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- Paso1: Carga el combo de producto final-->
+		<action name="ConsProdFina"
+			class="es.induserco.opilion.presentacion.gestionProduccionEnvasado.ConsProdFinaAction">
+			<result>gpenvasado/consProdFina.jsp</result>
+			<!-- <result type="chain">FiltGPEnva</result> -->
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- Paso1: Carga la consulta de RE de MP para ese PP seleccionado para indicar cantidad de envasado y RE de MP-->
+		<action name="ListREMP"
+			class="es.induserco.opilion.presentacion.gestionProduccionEnvasado.ListREMPAction">
+			<result>gpenvasado/consProdFina.jsp</result>
+			<result name="EAN13">gpenvasado/nuevoEnvasadoEan13.jsp</result>
+			<result name="EAN14">gpenvasado/nuevoEnvasadoEan14.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- Paso2: Inserta la orden de envasado y la marca como pendiente -->
+		<action name="InsertaOrdenEnv"
+			class="es.induserco.opilion.presentacion.gestionProduccionEnvasado.InsertaOrdenEnvAction">
+			<result type="chain">ListaEnvasar</result>
+			<!-- <result>gpenvasado/consRegiGPEN.jsp</result> -->
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="OrdenEnvaAuto"
+			class="es.induserco.opilion.presentacion.gestionProduccionEnvasado.OrdenEnvaAutoAction">
+			<result>gpenvasado/ordenEnvaAuto.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ActualizaOrdenEnv"
+			class="es.induserco.opilion.presentacion.gestionProduccionEnvasado.ActualizaOrdenEnvAction">
+			<!-- <result type="chain">ConsProdFina</result> -->
+			<result>gpenvasado/consRegiGPEN.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- Paso2: Inserta los RE de MP seleccionados y me lanza a la consulta de envases-->
+		<action name="InseREMP"
+			class="es.induserco.opilion.presentacion.gestionProduccionEnvasado.InseREMPAction">
+			<result>gpenvasado/editCantREMP.jsp</result>
+			<!--<result>gpenvasado/editCantREEN.jsp</result>-->
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- Paso3: Inserta las cantidades USABLES de MP-->
+		<action name="InseCantREMP"
+			class="es.induserco.opilion.presentacion.gestionProduccionEnvasado.InseCantREMPAction">
+			<result>gpenvasado/editCantREEN.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- Paso4: Inserta las cantidades USABLES de ENV -->
+		<action name="InseCantREEN"
+			class="es.induserco.opilion.presentacion.gestionProduccionEnvasado.InseCantREENAction">
+			<result type="chain">EditCantMermRE</result>
+			<!--<result>gpenvasado/editDetaGPEN.jsp</result>-->
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- Paso4: Muestra el detalle de los RE para indicar las cantidades de ENV-->
+		<action name="EditCantMermRE"
+			class="es.induserco.opilion.presentacion.gestionProduccionEnvasado.EditCantMermREAction">
+			<result>gpenvasado/editCantMermRE.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- Paso5: Ejecuta accion de insertar en la bdd las mermas y pasa al detalle (RegistroEnvases)-->
+		<action name="InseCantMermRE"
+			class="es.induserco.opilion.presentacion.gestionProduccionEnvasado.InseCantMermREAction">
+			<result type="chain">EditDetaGPEN</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- Paso5: Invoca al Detalle final del envasado para confirmar-->
+		<action name="EditDetaGPEN"
+			class="es.induserco.opilion.presentacion.gestionProduccionEnvasado.EditDetaGPENAction">
+			<result>gpenvasado/editDetaGPEN.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- Paso5: Actualiza los datos de hora final etc del envasado-->
+		<action name="InseDetaGPEN"
+			class="es.induserco.opilion.presentacion.gestionProduccionEnvasado.InseDetaGPENAction">
+			<result>/pagEscritorio.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- 3.- Editar cantidades de MP-->
+		<action name="EditCantREMP"
+			class="es.induserco.opilion.presentacion.gestionProduccionEnvasado.EditCantREMPAction">
+			<result>gpenvasado/editCantREMP.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- CONSULTA GP ENVASADO-->
+		<action name="FiltGPEnva"
+			class="es.induserco.opilion.presentacion.consultaGestionProduccion.FiltGPEnvaAction">
+			<result>gpenvasado/filtroEnvasados.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ConsGPEnva"
+			class="es.induserco.opilion.presentacion.consultaGestionProduccion.ConsGPEnvaAction">
+			<result>gpenvasado/consRegiGPEN.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- Acciones del envasado-->
+		<action name="UpdateRegistroEnvasado"
+			class="es.induserco.opilion.presentacion.gestionProduccionEnvasado.RegistroEnvasadoUpdateAction">
+			<result>gpenvasado/actualizarRegistroEnvasado.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ActualizarRegistroEnvasado"
+			class="es.induserco.opilion.presentacion.gestionProduccionEnvasado.ActualizarRegistroEnvasadoAction">
+			<result>gpenvasado/actualizarRegistroEnvasado.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="RegistroEnvasado"
+			class="es.induserco.opilion.presentacion.gestionProduccionEnvasado.RegistroEnvasadoAction">
+			<result>gpenvasado/registroEnvasado.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="EliminarRegistroEnvasado"
+			class="es.induserco.opilion.presentacion.gestionProduccionEnvasado.EliminarRegistroEnvasadoAction">
+			<result>gpenvasado/eliminarRegistroEnvasado.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="DeleteRegistroEnvasado"
+			class="es.induserco.opilion.presentacion.gestionProduccionEnvasado.RegistroEnvasadoDeleteAction">
+			<result>gpenvasado/actualizarRegistroEnvasado.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- EDIFACT -->
+		<action name="NormalToEDI"
+			class="es.induserco.edifact.presentacion.orders.NormalToEDIAction">
+			<!-- <result type="chain">ListarOrders</result> -->
+			<result name="success" type="redirectAction">
+				<param name="actionName">ListarOrders</param>
+			</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="RegistroOrders"
+			class="es.induserco.edifact.presentacion.orders.UploadFormAction">
+			<result type="chain">UploadEdifact</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="UploadEdifact"
+			class="es.induserco.edifact.presentacion.orders.VisualizaOrdersAction">
+			<!-- <result>edifact/visualizaorder.jsp</result> -->
+			<result>/edifact/visualizaPedido.jsp</result>
+			<result name="error">/edifact/edifactError.jsp</result>
+		</action>
+		<action name="ListarOrders"
+			class="es.induserco.edifact.presentacion.orders.ListaOrdersAction">
+			<result>edifact/listaorder.jsp</result>
+			<result name="error">edifact/edifactError.jsp</result>
+		</action>
+		<action name="OrderMuestra"
+			class="es.induserco.edifact.presentacion.orders.MuestraOrdersAction">
+			<result>registrosalida/verPedido.jsp</result>
+			<result name="error">edifact/edifactError.jsp</result>
+		</action>
+		<action name="EliminarPedido"
+			class="es.induserco.edifact.presentacion.orders.EliminarPedidoAction">
+			<result>edifact/listaorder.jsp</result>
+			<result name="error">edifact/edifactError.jsp</result>
+		</action>
+		<!-- Consultas Jasper Reports Procesos del negocio -->
+		<action name="ConsGPCribJR" class="es.induserco.opilion.presentacion.consultaGestionProduccion.ConsGPCribJRAction">
+       		<result name="success" type="jasper">
+            	<param name="location">reportes/ConsGPCribJR.jasper</param>
+            	<param name="dataSource">consulta</param>
+            	<param name="format">PDF</param>
+        	</result>
+		</action>
+		<action name="ConsGPEnvaJR" class="es.induserco.opilion.presentacion.consultaGestionProduccion.ConsGPEnvaJRAction">
+			<result name="success" type="jasper">
+				<param name="location">reportes/ConsGPEnvaJR.jasper</param>
+				<param name="dataSource">consulta</param>
+				<param name="format">PDF</param>
+			</result>
+		</action>
+		<action name="ConsGPCongJR" class="es.induserco.opilion.presentacion.consultaGestionProduccion.ConsGPCongJRAction">
+			<result name="success" type="jasper">
+				<param name="location">reportes/ConsGPCongJR.jasper</param>
+				<param name="dataSource">consulta</param>
+				<param name="format">PDF</param>
+			</result>
+		</action>
+		<action name="ConsGPDesgJR" class="es.induserco.opilion.presentacion.consultaGestionProduccion.ConsGPDesgJRAction">
+			<result name="success" type="jasper">
+				<param name="location">reportes/ConsGPDesgJR.jasper</param>
+				<param name="dataSource">consulta</param>
+				<param name="format">PDF</param>
+			</result>
+		</action>
+		<action name="ConsGPSeleJR" class="es.induserco.opilion.presentacion.consultaGestionProduccion.ConsGPSeleJRAction">
+			<result name="success" type="jasper">
+				<param name="location">reportes/ConsGPSeleJR.jasper</param>
+				<param name="dataSource">consulta</param>
+				<param name="format">PDF</param>
+			</result>
+		</action>
+		<action name="ConsGPFumiJR" class="es.induserco.opilion.presentacion.consultaGestionProduccion.ConsGPFumiJRAction">
+			<result name="success" type="jasper">
+				<param name="location">reportes/ConsGPFumiJR.jasper</param>
+				<param name="dataSource">consulta</param>
+				<param name="format">PDF</param>
+			</result>
+		</action>
+		<action name="ConsPRJR" class="es.induserco.opilion.presentacion.proveedor.ConsPRJRAction">
+			<result name="success" type="jasper">
+				<param name="location">reportes/ConsProvJR.jasper</param>
+				<param name="dataSource">consulta</param>
+				<param name="format">PDF</param>
+			</result>
+		</action>
+		<action name="ConsCLJR" class="es.induserco.opilion.presentacion.cliente.ConsCLJRAction">
+       		<result name="success" type="jasper">
+            	<param name="location">reportes/ConsCLJR.jasper</param>
+            	<param name="dataSource">consulta</param>
+            	<param name="format">PDF</param>
+        	</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ConsMateriasJR" class="es.induserco.opilion.presentacion.producto.ConsMateriasJRAction">
+			<result name="success" type="jasper">
+            	<param name="location">reportes/ConsMateriasJR.jasper</param>
+            	<param name="dataSource">consulta</param>
+            	<param name="format">PDF</param>
+            </result>
+		</action>
+		<action name="ConsProductosJR" class="es.induserco.opilion.presentacion.producto.ConsProductosJRAction">
+       		<result name="success" type="jasper">
+            	<param name="location">reportes/ConsProductosJR.jasper</param>
+            	<param name="dataSource">consulta</param>
+            	<param name="format">PDF</param>
+        	</result>
+		</action>
+		<action name="ConsEnvsJR" class="es.induserco.opilion.presentacion.envase.ConsEnvsJRAction">
+	      	<result name="success" type="jasper">
+	           	<param name="location">reportes/ConsEnvsJR.jasper</param>
+	           	<param name="dataSource">consulta</param>
+	           	<param name="format">PDF</param>
+	       	</result>
+		</action>
+		<action name="ConsREJR" class="es.induserco.opilion.presentacion.registroentrada.ConsREJRAction">
+       		<result name="success" type="jasper">
+            	<param name="location">reportes/ConsREJR.jasper</param>
+            	<param name="dataSource">re</param>
+            	<param name="format">PDF</param>
+        	</result>
+		</action>
+		<action name="ConsDevoJR" class="es.induserco.opilion.presentacion.registroentrada.ConsDevoJRAction">
+       		<result name="success" type="jasper">
+            	<param name="location">reportes/ConsDevoJR.jasper</param>
+            	<param name="dataSource">re</param>
+            	<param name="format">PDF</param>
+        	</result>
+		</action>
+		<action name="EtiqREJR" class="es.induserco.opilion.presentacion.registroentrada.EtiqREJRAction">
+       		<result name="success" type="jasper">
+            	<param name="location">reportes/entradas/EtiqREJR.jasper</param>
+            	<param name="dataSource">re</param>
+            	<param name="format">PDF</param>
+        	</result>
+		</action>
+		<!-- Etiqueta envasado-->
+		<action name="EtiqENJR" class="es.induserco.opilion.presentacion.gestionProduccionEnvasado.EtiqENJRAction">
+       		<result name="success" type="jasper">
+            	<param name="location">${rutaReporte}</param>
+            	<param name="dataSource">re</param>
+            	<param name="format">PDF</param>
+        	</result>
+		</action>
+		<!-- Detalle envasado-->
+		<action name="ConsDetaGPENJR" class="es.induserco.opilion.presentacion.gestionProduccionEnvasado.ConsDetaGPENJRAction">
+			<result name="success" type="jasper">
+				<param name="location">reportes/envasados/ConsDetaGPENJR.jasper</param>
+				<param name="dataSource">re</param>
+				<param name="format">PDF</param>
+			</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- MODULO MAQUINARIA-->
+		<action name="ListMQ"
+			class="es.induserco.opilion.presentacion.mantenimiento.ListMQAction">
+			<result>mantenimiento/listMQ.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ConsMQ"
+			class="es.induserco.opilion.presentacion.mantenimiento.ConsMQAction">
+			<result>mantenimiento/listMQ.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="EditMQ"
+			class="es.induserco.opilion.presentacion.mantenimiento.EditMQAction">
+			<result>mantenimiento/editMQ.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="InseMQ"
+			class="es.induserco.opilion.presentacion.mantenimiento.InseMQAction">
+			<result type="chain">ListMQ</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="EditMT"
+			class="es.induserco.opilion.presentacion.mantenimiento.EditMTAction">
+			<result>mantenimiento/editMT.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="InseMT"
+			class="es.induserco.opilion.presentacion.mantenimiento.InseMTAction">
+			<result name="redirect" type="redirectAction">
+					<param name="actionName">ListMQ</param>
+			</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="FiltMT"
+			class="es.induserco.opilion.presentacion.mantenimiento.FiltMTAction">
+			<result>mantenimiento/consMT.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="FiltMTMaquina"
+			class="es.induserco.opilion.presentacion.mantenimiento.FiltMTMaquinaAction">
+			<result>mantenimiento/consMTMaquina.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ConsMT"
+			class="es.induserco.opilion.presentacion.mantenimiento.ConsMTAction">
+			<result>mantenimiento/consMT.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ProgramarMT"
+			class="es.induserco.opilion.presentacion.mantenimiento.ProgramarMTAction">
+			<result>mantenimiento/programarMT.jsp</result>
+			<result name="PROGRAMAR_MAQUINA">mantenimiento/programarMTMaquina.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="RegistrarMT"
+			class="es.induserco.opilion.presentacion.mantenimiento.RegistrarMTAction">
+			<result>mantenimiento/registrarMT.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="InseRegMT"
+			class="es.induserco.opilion.presentacion.mantenimiento.InseRegMTAction">
+			<result type="chain">ListMQ</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ConsMTJR" class="es.induserco.opilion.presentacion.mantenimiento.ConsMTJRAction">
+			<result name="success" type="jasper">
+		    	<param name="location">reportes/ConsMTJR.jasper</param>
+		        <param name="dataSource">consulta</param>
+		        <param name="format">PDF</param>
+			</result>
+		</action>
+		<!-- MODULO TRAZABILIDAD INVERSA -->
+		<action name="ConsultaTrazaProducto"
+			class="es.induserco.opilion.presentacion.consultaTrazabilidad.ConsultaTrazaProductoAction">
+			<result>trazabilidad/consultaTrazaProducto.jsp</result>
+			<result name="NO_EXISTE">trazabilidad/consultaTrazaError.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ConsultaTrazaRegistroEntrada"
+			class="es.induserco.opilion.presentacion.consultaTrazabilidad.ConsultaTrazaRegistroEntradaAction">
+			<result>trazabilidad/consultaTrazaRegistroEntrada.jsp</result>
+			<result name="NO_EXISTE">trazabilidad/consultaTrazaError.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="showLogin">
+			<result>/login.jsp</result>
+		</action>
+		<!-- Creados Andres  -->
+		<action name="VisualizaProcesoEnvasado"
+			class="es.induserco.opilion.presentacion.gestionProduccionEnvasado.VisualizaProcesoEnvasadoAction">
+			<result name="EAN13">gpenvasado/visualizarProceso.jsp</result>
+			<result name="EAN14">gpenvasado/visualizarProcesoEan14.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="AltaProducto" class="es.induserco.opilion.presentacion.producto.AltaProductoAction">
+		<result>producto/altaProducto.jsp</result>
+		<result name="error">/error.jsp</result>
+		</action>
+		<action name="ListaProductos" class="es.induserco.opilion.presentacion.producto.ListaProductosAction">
+		<result>producto/listaProductos.jsp</result>
+		<result name="error">/error.jsp</result>
+		</action>
+		<action name="RegistroNuevoProducto" class="es.induserco.opilion.presentacion.producto.RegistroNuevoProductoAction">
+		<!-- <result>producto/consultaProducto.jsp</result> -->
+		<result type="chain">FiltroProductos</result>
+		<!-- <result>producto/listaProductos.jsp</result> -->
+		<!-- <result name="input" type="chain">RegistroNuevoProducto</result>  -->
+		<result name="error">/error.jsp</result>
+		</action>
+		<action name="MostrarProducto"
+			class="es.induserco.opilion.presentacion.producto.MostrarProductoAction">
+			<result>producto/editarProducto.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ActualizaProducto" class="es.induserco.opilion.presentacion.producto.ActualizaProductoAction">
+		<!-- <result>producto/consultaProducto.jsp</result> -->
+		<result type="chain">FiltroProductos</result>
+		<!-- <result>producto/listaProductos.jsp</result> -->
+		<result name="error">/error.jsp</result>
+		</action>
+		<!-- END Creados Andres  -->
+		<action name="FiltroProductos"
+			class="es.induserco.opilion.presentacion.producto.FiltroProductoAction">
+			<!-- <result>producto/consultaProducto.jsp</result> -->
+			<result>producto/filtraProductos.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ConsultaProducto"
+			class="es.induserco.opilion.presentacion.producto.ConsultaProductoAction">
+			<!-- <result>producto/consultaProducto.jsp</result> -->
+			<result>producto/consultaProducto.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ListaEnvasar"
+			class="es.induserco.opilion.presentacion.consultaGestionProduccion.ListarEnvasarAction">
+			<result>gpenvasado/listaEnvasar.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="FiltraListarEnvasar"
+			class="es.induserco.opilion.presentacion.consultaGestionProduccion.FiltraListarEnvasarAction">
+			<result>gpenvasado/listaEnvasar.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="GestionarProcesoEnvasado"
+			class="es.induserco.opilion.presentacion.gestionProduccionEnvasado.GestionarProcesoEnvasadoAction">
+			<result name="EAN13">gpenvasado/gestionarProcesoEnvasado.jsp</result>
+			<result name="EAN14">gpenvasado/gestionarProcesoEnvasadoEan14.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="SeleccionUbicacionesEnvasado"
+			class="es.induserco.opilion.presentacion.ubicacion.SeleccionUbicacionesEnvasadoAction">
+			<result name="EAN13">ubicacion/seleccionUbicacionesEnvasado.jsp</result>
+			<result name="EAN14">ubicacion/seleccionUbicacionesEnvasadoEan14.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="IniciaProcesoEnvasado"
+			class="es.induserco.opilion.presentacion.gestionProduccionEnvasado.IniciaProcesoEnvasadoAction">
+			<result name="EAN13">gpenvasado/gestionarProcesoEnvasado.jsp</result>
+			<result name="EAN14">gpenvasado/gestionarProcesoEnvasadoEan14.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ContinuaProcesoEnvasado"
+			class="es.induserco.opilion.presentacion.gestionProduccionEnvasado.ContinuaProcesoEnvasadoAction">
+			<result name="EAN13">gpenvasado/gestionarProcesoEnvasado.jsp</result>
+			<result name="EAN14">gpenvasado/gestionarProcesoEnvasadoEan14.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="PausaProcesoEnvasado"
+			class="es.induserco.opilion.presentacion.gestionProduccionEnvasado.PausaProcesoEnvasadoAction">
+			<result name="EAN13">gpenvasado/gestionarProcesoEnvasado.jsp</result>
+			<result name="EAN14">gpenvasado/gestionarProcesoEnvasadoEan14.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="BloqueaProcesoEnvasado"
+			class="es.induserco.opilion.presentacion.gestionProduccionEnvasado.BloqueaProcesoEnvasadoAction">
+			<result name="EAN13">gpenvasado/gestionarProcesoEnvasado.jsp</result>
+			<result name="EAN14">gpenvasado/gestionarProcesoEnvasadoEan14.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="FinalizaProcesoEnvasado"
+			class="es.induserco.opilion.presentacion.gestionProduccionEnvasado.FinalizaProcesoEnvasadoAction">
+			 <!-- <result>gpenvasado/gestionarProcesoEnvasado.jsp</result> -->
+			 <!-- <result type="chain">VisualizaProcesoEnvasado</result> -->
+			 <result type="redirectAction">
+					<param name="actionName">${url}</param>
+			</result>
+			 <result name="error">/error.jsp</result>
+		</action>
+		<action name="OpcionesEnvasado"
+			class="es.induserco.opilion.presentacion.gestionProduccionEnvasado.OpcionesEnvasadoAction">
+			<result>gpenvasado/opcionesEnvasado.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- AJAX -->
+		<action name="EnvasadoAjax" class="es.induserco.opilion.presentacion.gestionProduccionEnvasado.EnvasadoAjaxAction">
+			<result>gpenvasado/ajaxEnvasado.jsp</result>
+			<result name="INPUT">gpenvasado/ajaxEnvasado.jsp</result>
+			<result name="ERROR">error.jsp</result>
+			<!-- <result>gpenvasado/opcionesEnvasado.jsp</result> -->
+		</action>
+		<action name="SeleccionLineaAjax" class="es.induserco.opilion.presentacion.ubicacion.SeleccionLineaAjaxAction">
+			<result>${url}</result>
+			<!-- <result name="A1Z1L1">ubicacion/A1Z1L1.jsp</result> -->
+			<result name="ERROR">error.jsp</result>
+			<!-- <result>gpenvasado/opcionesEnvasado.jsp</result> -->
+		</action>
+		<!-- <action name="SacarSeleccionLineaAjax"
+			class="es.induserco.opilion.presentacion.ubicacion.SacarSeleccionLineaAjaxAction">
+			<result>${url}</result>
+			<result name="ERROR">error.jsp</result>
+		</action>  -->
+		<action name="SeleccionPiso" class="es.induserco.opilion.presentacion.ubicacion.SeleccionPisoAction">
+			<result name="A1Z1L1E1P3">ubicacion/A1Z1L1E1P3.jsp</result>
+			<result name="ERROR">error.jsp</result>
+			<!-- <result>gpenvasado/opcionesEnvasado.jsp</result> -->
+		</action>
+		<action name="SeleccionHueco" class="es.induserco.opilion.presentacion.ubicacion.SeleccionHuecoAction">
+			<result>ubicacion/infoUbicacionAjax.jsp</result>
+			<result name="ERROR">error.jsp</result>
+			<!-- <result>gpenvasado/opcionesEnvasado.jsp</result> -->
+		</action>
+		<action name="MuestraAlmacenadosAjax" class="es.induserco.opilion.presentacion.ubicacion.MuestraAlmacenadosAjaxAction">
+			<result>ubicacion/muestraAlmacenadosAjax.jsp</result>
+			<result name="ERROR">error.jsp</result>
+			<!-- <result>gpenvasado/opcionesEnvasado.jsp</result> -->
+		</action>
+		<action name="MuestraHuecosSeleccionados" class="es.induserco.opilion.presentacion.ubicacion.MuestraHuecosSeleccionadosAction">
+			<result>ubicacion/muestraHuecosSeleccionados.jsp</result>
+			<result name="ERROR">error.jsp</result>
+		</action>
+		<action name="MuestraHueco" class="es.induserco.opilion.presentacion.ubicacion.MuestraHuecoAction">
+			<result>ubicacion/muestraHueco.jsp</result>
+			<result name="ERROR">error.jsp</result>
+		</action>
+		<action name="SalvaDatosUbicacion" class="es.induserco.opilion.presentacion.ubicacion.SalvaDatosUbicacionAction">
+			<!-- <result type="chain">PreviaRegistroOETmp</result> -->
+			<result name="redirect" type="redirectAction">
+					<param name="actionName">${url}</param>
+			</result>
+			<result name="ERROR">error.jsp</result>
+		</action>
+		<action name="SalvarUbicacionesEnvasado" class="es.induserco.opilion.presentacion.ubicacion.SalvarUbicacionesEnvasadoAction">
+			<result type="chain">ListaEnvasar</result>
+			<result name="ERROR">error.jsp</result>
+		</action>
+		<action name="SalvaDatosSacarUbicacion"
+			class="es.induserco.opilion.presentacion.ubicacion.SalvaDatosSacarUbicacionAction">
+			<!-- <result type="chain">PreviaRegistroOETmp</result> -->
+			<!-- <result name="redirect" type="redirectAction">
+				<param name="location">${url}?parametros=${parametros}</param>
+			</result>-->
+			<result name="redirect" type="redirectAction">
+					<param name="actionName">${url}</param>
+			</result>
+			<result name="ERROR">error.jsp</result>
+		</action>
+		<action name="MateriasPrimasAjax" class="es.induserco.opilion.presentacion.producto.MateriasPrimasAjaxAction">
+			<result>materiaprima/ajaxMateriaPrima.jsp</result>
+			<result name="INPUT">materiaprima/ajaxMateriaPrima.jsp</result>
+			<result name="ERROR">error.jsp</result>
+		</action>
+		<action name="VerLotesIngrediente" class="es.induserco.opilion.presentacion.producto.VerLotesIngredienteAction">
+			<result>materiaprima/verLotesIngrediente.jsp</result>
+			<result name="ERROR">error.jsp</result>
+		</action>
+		<action name="VerLotesEnvase" class="es.induserco.opilion.presentacion.envase.VerLotesEnvaseAction">
+			<result>envase/verLotesEnvase.jsp</result>
+			<result name="ERROR">error.jsp</result>
+		</action>
+		<action name="MantenimientoAjax" class="es.induserco.opilion.presentacion.mantenimiento.MantenimientoAjaxAction">
+			<result>mantenimiento/programarMTAjax.jsp</result>
+			<result name="INPUT">mantenimiento/programarMTAjax.jsp</result>
+			<result name="ERROR">error.jsp</result>
+			<!-- <result>gpenvasado/opcionesEnvasado.jsp</result> -->
+		</action>
+		<action name="MantenimientoMaquinaAjax" class="es.induserco.opilion.presentacion.mantenimiento.MantenimientoMaquinaAjaxAction">
+			<result>mantenimiento/programarMTMaquinaAjax.jsp</result>
+			<result name="INPUT">mantenimiento/programarMTMaquinaAjax.jsp</result>
+			<result name="ERROR">error.jsp</result>
+			<!-- <result>gpenvasado/opcionesEnvasado.jsp</result> -->
+		</action>
+		<!-- BACKUP -->
+		<action name="PrepararBackup" class="es.induserco.opilion.presentacion.PrepararBackupAction">
+			<result name="SUCCESS">herramientas/backup.jsp</result>
+			<result name="ERROR">herramientas/errorBackup.jsp</result>
+		</action>
+		<action name="Backup" class="es.induserco.opilion.presentacion.BackupAction">
+			<result name="SUCCESS">herramientas/muestraBackup.jsp</result>
+			<result name="ERROR">herramientas/errorBackup.jsp</result>
+		</action>
+		<action name="ComprobarBackup" class="es.induserco.opilion.presentacion.ComprobarBackupAction">
+			<result name="SUCCESS">vacio.jsp</result>
+			<result name="ERROR">errorBackup.jsp</result>
+		</action>
+		<action name="ConfigurarDB" class="es.induserco.opilion.presentacion.ConfigurarDBAction">
+			<result name="SUCCESS">herramientas/configurarDB.jsp</result>
+			<result name="ERROR">herramientas/errorBackup.jsp</result>
+		</action>
+		<action name="ConfigurarDBDefecto" class="es.induserco.opilion.presentacion.ConfigurarDBDefectoAction">
+			<result name="SUCCESS">herramientas/configurarDB.jsp</result>
+			<result name="ERROR">herramientas/errorBackup.jsp</result>
+		</action>
+		<action name="SalvarCambiosDB" class="es.induserco.opilion.presentacion.SalvarCambiosDBAction">
+			<result name="redirect" type="redirectAction">
+					<param name="actionName">${url}</param>
+			</result>
+			<result name="ERROR">herramientas/errorBackup.jsp</result>
+		</action>
+		<!-- DEVOLUCIONES -->
+		<action name="Devolucion" class="es.induserco.opilion.presentacion.devoluciones.DevolucionAction">
+			<result>devoluciones/devolucion.jsp</result>
+			<result name="ERROR">error.jsp</result>
+		</action>
+		<action name="DevolverLote" class="es.induserco.opilion.presentacion.devoluciones.DevolverLoteAction">
+			<result type="chain">ListaDevoluciones</result>
+			<result name="UBICA_DEVOLUCION">ubicacion/seleccionAlmacen.jsp</result>
+			<result name="ERROR">error.jsp</result>
+		</action>
+		<action name="DestriparDevolucion" class="es.induserco.opilion.presentacion.devoluciones.DestriparDevolucionAction">
+			<result>devoluciones/destriparDevolucion.jsp</result>
+			<result name="ERROR">error.jsp</result>
+		</action>
+		<action name="ReaprovecharDevolucion" class="es.induserco.opilion.presentacion.devoluciones.ReaprovecharDevolucionAction">
+			<result type="chain">ListaDevoluciones</result>
+			<result name="ERROR">error.jsp</result>
+		</action>
+		<action name="ListaDevoluciones" class="es.induserco.opilion.presentacion.devoluciones.ListaDevolucionesAction">
+			<result>devoluciones/listaDevoluciones.jsp</result>
+			<result name="ERROR">error.jsp</result>
+		</action>
+		<action name="CompruebaLoteCantidad"
+			class="es.induserco.opilion.presentacion.devoluciones.CompruebaLoteCantidadAction">
+			<result>devoluciones/compruebaLoteCantidad.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ControlTiempos" class="es.induserco.opilion.presentacion.controlTiempos.ControlTiemposAction">
+			<result name="ENVASADO">controlTiempos/controlTiempos.jsp</result>
+			<result name="ERROR">error.jsp</result>
+		</action>
+		<action name="ActualizaTiempos" class="es.induserco.opilion.presentacion.controlTiempos.ActualizaTiemposAction">
+			<result>vacio.jsp</result>
+		</action>
+		<action name="RegistroGrupoProducto"
+			class="es.induserco.opilion.presentacion.producto.RegistroGrupoProductoAction">
+			<result>producto/registroGrupoProducto.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="IngresarRegistroGrupoProducto"
+			class="es.induserco.opilion.presentacion.producto.IngresarRegistroGrupoProductoAction">
+			<result type="chain">Inicio</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="RegistroFamilia"
+			class="es.induserco.opilion.presentacion.producto.RegistroFamiliaAction">
+			<result>producto/registroFamilia.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="IngresarRegistroFamilia"
+			class="es.induserco.opilion.presentacion.producto.IngresarRegistroFamiliaAction">
+			<result type="chain">Inicio</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="RegistroCategoria"
+			class="es.induserco.opilion.presentacion.producto.RegistroCategoriaAction">
+			<result>producto/registroCategoria.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="IngresarRegistroCategoria"
+			class="es.induserco.opilion.presentacion.producto.IngresarRegistroCategoriaAction">
+			<result type="chain">Inicio</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="RegistroImpuesto"
+			class="es.induserco.opilion.presentacion.producto.RegistroImpuestoAction">
+			<result>producto/registroImpuesto.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="IngresarRegistroImpuesto"
+			class="es.induserco.opilion.presentacion.producto.IngresarRegistroImpuestoAction">
+			<result type="chain">Inicio</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ObtenerCodigo"
+			class="es.induserco.opilion.presentacion.ObtenerCodigoAction">
+			<result name="success" type="jasper">
+				<param name="location">reportes/codigoBarras.jasper</param>
+		        <param name="dataSource">codigo</param>
+		        <param name="format">PDF</param>
+		    </result>
+		</action>
+		<!-- FLUJOS DE CODIGOS -->
+		<action name="FlujoCodigos"
+			class="es.induserco.opilion.presentacion.FlujoCodigosAction">
+			<result>flujoCodigos.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ComenzarFlujo"
+			class="es.induserco.opilion.presentacion.ComenzarFlujoAction">
+			<result type="chain">${url}</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="FlujoMover"
+			class="es.induserco.opilion.presentacion.ubicacion.FlujoMoverAction">
+			<result>ubicacion/flujoMover.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="RealizarFlujoMover"
+			class="es.induserco.opilion.presentacion.ubicacion.RealizarFlujoMoverAction">
+			<result>ubicacion/flujoMover.jsp</result>
+			<result name="redirect" type="redirectAction">
+					<param name="actionName">${url}</param>
+			</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="FlujoMerma" class="es.induserco.opilion.presentacion.ubicacion.FlujoMermaAction">
+			<result>ubicacion/flujoMerma.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="RealizarFlujoMerma"
+			class="es.induserco.opilion.presentacion.ubicacion.RealizarFlujoMermaAction">
+			<result>ubicacion/flujoMerma.jsp</result>
+			<result name="redirect" type="redirectAction">
+					<param name="actionName">${url}</param>
+			</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="FlujoDevolucion"
+			class="es.induserco.opilion.presentacion.producto.FlujoDevolucionAction">
+			<result>producto/flujoDevolucion.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="RealizarFlujoDevolucion"
+			class="es.induserco.opilion.presentacion.producto.RealizarFlujoDevolucionAction">
+			<result>producto/flujoDevolucion.jsp</result>
+			<result name="redirect" type="redirectAction">
+					<param name="actionName">${url}</param>
+			</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ListaUbicacionesRegistroAjax" class="es.induserco.opilion.presentacion.ubicacion.ListaUbicacionesRegistroAjaxAction">
+			<result>ubicacion/lista_ubicaciones_registro_ajax.jsp</result>
+		</action>
+		<action name="ModificarStockRegistro" class="es.induserco.opilion.presentacion.producto.ModificarStockRegistroAction">
+			<result>ok.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="ValidarLoteRegistroAjax" class="es.induserco.opilion.presentacion.producto.ValidarLoteRegistroAjaxAction">
+			<result>producto/validar_lote_registro_ajax.jsp</result>
+		</action>
+		<action name="ListaProductoAjax" class="es.induserco.opilion.presentacion.producto.ListaProductoAjaxAction">
+			<result>producto/lista_producto_ajax.jsp</result>
+		</action>
+		
+		<action name="ListaUbicacionRegistroAjax" class="es.induserco.opilion.presentacion.ubicacion.ListaUbicacionRegistroAjaxAction">
+			<result>ubicacion/lista_ubicacion_registro_ajax.jsp</result>
+		</action>
+		
+	</package>
+</struts>

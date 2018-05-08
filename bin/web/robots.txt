@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /CONF/
+Crawl-delay: 50
+

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report2" language="groovy" pageWidth="229" pageHeight="164" columnWidth="229" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" whenResourceMissingType="Empty" isIgnorePagination="true" uuid="acf8a27a-8ce6-46a3-b2fa-e321c9f8cd50">
+	<property name="ireport.zoom" value="3.756574004507894"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="1"/>
+	<field name="loteAsignado" class="java.lang.String"/>
+	<field name="fecha" class="java.lang.String"/>
+	<field name="descProducto" class="java.lang.String"/>
+	<field name="fechaCaducidad" class="java.lang.String"/>
+	<field name="origen" class="java.lang.String"/>
+	<field name="descripcionCategoria" class="java.lang.String"/>
+	<field name="peso" class="java.lang.Double"/>
+	<field name="registroSanitario" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="164" splitType="Stretch">
+			<componentElement>
+				<reportElement uuid="252a9f27-32cc-481d-9529-14ed2db38634" mode="Opaque" x="28" y="1" width="154" height="27"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128" drawText="false" checksumRequired="false" barWidth="0" barHeight="0">
+					<jr:codeExpression><![CDATA[$F{loteAsignado}]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+			<textField>
+				<reportElement uuid="ed8e0df9-f2ce-49be-b7aa-89566efbde63" x="113" y="61" width="103" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="37a2c9ce-b8ce-439f-994f-cfe13ff89c31" x="11" y="50" width="23" height="12"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Lote:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8af413e9-3463-4f13-a33e-3dffa2c4b329" x="11" y="72" width="110" height="12"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Consumir pref. antes del]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5969aedd-f625-489d-80e9-a29cada236e9" x="11" y="61" width="102" height="12"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Fecha de congelación:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="c20cfcb5-fcd7-42d6-8d79-a0754fa916af" stretchType="RelativeToBandHeight" x="122" y="72" width="94" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fechaCaducidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b2197d45-8c85-43de-9de3-ce31ffa388d9" x="34" y="50" width="79" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{loteAsignado}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="898cdbe2-6282-4d79-8bce-9486e9bb96c8" x="121" y="50" width="35" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Origen:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="dcfe5c1f-be7c-44b1-8bd1-bbb0784a1099" x="155" y="50" width="61" height="12"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{origen}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="1e716f5e-3321-4988-b167-70822ec37da1" x="11" y="83" width="48" height="12"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Categoría:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="d5fdfa0e-b809-461c-8b8f-96033162395a" x="59" y="83" width="157" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descripcionCategoria}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="64df0c07-6e4d-43f5-82b2-e919d27145b2" x="11" y="94" width="63" height="12"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Peso Neto (Kg.):]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="ade39ac9-8397-408e-86bc-a55b2a5c1a40" x="74" y="90" width="47" height="26"/>
+				<textElement verticalAlignment="Middle">
+					<font size="17"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{peso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7cd2bb3e-3c3c-4ac7-9ec1-e5be4520fe34" x="121" y="94" width="97" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{registroSanitario}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="e4584f3f-845b-48ea-91e3-e1f741051c2d" x="11" y="26" width="205" height="25"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descProducto}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="be85f171-3f9d-450d-9d11-15a04d469686" x="-1" y="136" width="230" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[P. I. Barcia-Almuña Parcl.11-2, 33700 Luarca (Asturias)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a47e01a6-bbde-41b3-8284-21a9d638e3de" x="-1" y="123" width="230" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Legumbres La Tierrina Vaqueira S.L.U]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="bd0ef57e-d26e-402c-86e0-b9bdba26dedf" x="0" y="149" width="229" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Atención al cliente: 606377062]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="b62581d9-b33b-4c26-9e48-3833de0aac4a" x="3" y="123" width="222" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="3cb8b436-f5ad-4436-a163-4d7c16242367" x="188" y="15" width="25" height="9"/>
+				<textElement>
+					<font size="5" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rev. 01]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="580e4c32-70eb-4f1e-935f-310df593d279" x="188" y="6" width="33" height="10" forecolor="#CCCCCC"/>
+				<textElement>
+					<font size="5" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ENVA-R02]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1ead1234-8091-4a34-8f27-2423791c3a33" x="3" y="113" width="226" height="10"/>
+				<textElement textAlignment="Center">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Conservación: Mantener a -20ºC. Añadir sin descongelar al agua de cocción.]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

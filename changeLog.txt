@@ -1,0 +1,17 @@
+04/09/2012: Desde almacén, acceso a la trazabilidad de los lotes. Producto: pedir confirmación cuando se quiera editar un producto del que hay stock
+
+10/09/2012: Directamente desde un proceso de envasado finalizado podemos imprimir la etiqueta; Gestión de clientes, nombre y apellidos juntos, nombre comercial a parte; Devoluciones, pedir confirmación antes de insertar, cambio cantidad por unidades, se aceptan registros de productos venta como devoluciones, tres acciones correctoras en lugar de solo 2: añadida reaprovechar; Nuevo pedido, a partir de la primera dirección seleccionada, que cargue las demás automáticamente; Facturas, reporte ajustado al reporte de los albaranes (items vs graneles)
+
+02/04/2013: Struts 2.3.7
+
+24/04/2013:
+	1. Reporte de vehículo y de lanzadera a Rev 02. Se muestra el nombre de la impresora en el reporte.
+	2. Corregido problema en reporte de lanzadera y vehículo. Si el producto es un EAN14, aparecía el nombre del EAN13 en lugar del nombre del EAN14.
+	3. BD: Añadidas tablas 'autoventa_impresora' y 'autoventa_vehiculo_impresora'
+	4. Deshabilitado el usuario "prueba"
+	
+25/04/2013:
+	1. Corregido error al cargar un albarán. Si en un albarán va un registro de entrada (producto venta) que no sea una agrupación, carga mal las unidades leidas del lote. No hacía comprobaciones de si era un item o una agrupación.
+
+30/05/2013:
+	1. Lanzadera de pedidos

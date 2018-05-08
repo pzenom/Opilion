@@ -1,0 +1,40 @@
+[{
+   
+        text:'Entradas',
+        id:'entradas',
+        leaf:true
+    },{
+        text:'Procesos Intermedios',
+        id:'procesos',
+        children:[{
+			text:'Envasado',
+			id:'envasado',
+			leaf:true
+		},{
+			text:'Filtrado',
+			id:'filtrado',
+			leaf:true
+		},{
+			text:'Cribado',
+			id:'cribado',
+			leaf:true
+		},{
+			text:'Desgranado',
+			id:'desgranado',
+			leaf:true
+		},{
+			text:'Congelado',
+			id:'congelado',
+			leaf:true
+		},{
+			text:'Fumigado',
+			id:'fumigado',
+			leaf:true
+		}]
+    },{
+        text:'Salidas',
+        //id:'salidas',
+        id:'absolute',
+        leaf:true
+    
+}]

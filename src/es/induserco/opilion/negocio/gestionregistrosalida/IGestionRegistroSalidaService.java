@@ -1,0 +1,81 @@
+package es.induserco.opilion.negocio.gestionregistrosalida;
+
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import java.util.Vector;
+
+import es.induserco.edifact.data.Order;
+import es.induserco.edifact.data.OrdersLin;
+import es.induserco.edifact.data.x12.DTM;
+import es.induserco.opilion.data.comun.Usuario;
+import es.induserco.opilion.data.comun.contacto.Direccion;
+import es.induserco.opilion.data.entidades.Albaran;
+import es.induserco.opilion.data.entidades.Comercial;
+import es.induserco.opilion.data.entidades.EstadoPedido;
+import es.induserco.opilion.data.entidades.Factura;
+import es.induserco.opilion.data.entidades.Lanzadera;
+import es.induserco.opilion.data.entidades.PortesTransporte;
+import es.induserco.opilion.data.entidades.Producto;
+import es.induserco.opilion.data.entidades.RegistroSalida;
+import es.induserco.opilion.data.entidades.TemperaturaTransporte;
+
+public interface IGestionRegistroSalidaService {
+	
+	public String getFechaRegistro() throws Exception;
+	public String getCodigoAlbaran() throws Exception;
+	public Vector getTipoVehiculos() throws Exception;
+	public Vector getClientes() throws Exception;
+	public Vector getProductos() throws Exception;
+	public Vector getVehiculos() throws Exception;
+	public Vector getComerciales() throws Exception;
+	public Boolean addRegistroSalida(RegistroSalida exit) throws Exception;
+	public Boolean updateRegistroSalida(RegistroSalida exitf,RegistroSalida exitu) throws Exception;
+	public Boolean deleteRegistroSalida(RegistroSalida exitf,RegistroSalida exitd) throws Exception;
+	public Vector getRegistroSalidas(String lote,String codigoEntrada, Date fecha,Long idProducto) throws Exception;
+	public Albaran getEncabezadoAlbaran(String codigoAlbaran) throws Exception;
+	public Vector<RegistroSalida> getDetalleAlbaran(Albaran albaran) throws Exception;
+	public Boolean addAlbaran(Albaran albaran) throws Exception;
+	public Vector loadRegistroSalida(String codigoSalida) throws Exception;
+	public Vector<Albaran> getAlbaran(String codigoAlbaran, Date fecha, Long idCliente) throws Exception;
+	public Vector getRSLineaAlbaran(String codigoAlbaran, Long linNum) throws Exception;
+	public Vector getRSLineaAlbaranTotal(String codigoAlbaran, Long linNum) throws Exception;
+	public Albaran getEncabezadoAlbaranOrden(Order orden) throws Exception;
+	public Albaran getTotalesAlbaranOrden(String codigoAlbaran) throws Exception;
+	public Vector<Albaran> getAlbaranes(Albaran albaran, int filtro) throws Exception;
+	public Boolean updateDetaAlba(Map mapaPrecUnit, String codigoAlbaran) throws Exception;
+	public Boolean addFactura(String codigoAlbaran,Factura fact) throws Exception;
+	public RegistroSalida getAlbaranRS(String orden) throws Exception;
+	public Vector<Direccion> getDireccionesClientes(String tipo) throws Exception;
+	public Object getFormasDePago() throws Exception;
+	public Albaran getTotalesOrden(String bgmNum) throws Exception;
+	public String getInfoProducto(String ean) throws Exception;
+	public String getDireccionesEAN(String idDireccion) throws Exception;
+	public Vector getDireccionesCantidades(Long idOrders, String linNum) throws Exception;
+	public List<OrdersLin> getLineasPedido(String codigo) throws Exception;
+	public boolean actualizaEstadoPedido(String pedido, char c) throws Exception;
+	public Vector<Factura> getFacturas(Factura factura, String fechaInicio, String fechaFin, Usuario usuario) throws Exception;
+	public String unirPedidos(List<String> codigosPedidos, DTM fechaEntrega) throws Exception;
+	public Vector<OrdersLin> getLineasPedidoDireccion(long idDireccion) throws Exception;
+	public String unirLineasPedidosDireccion(List<String> codigosLineasDireccion, DTM fechaEntrega,
+			Long idDireccion) throws Exception;
+	public Albaran getAlbaran(String codigoAlbaran, boolean lineaCarrefour) throws Exception;
+	public Vector<Direccion> getDireccionesAlbaran(Albaran albaran) throws Exception;
+	public Albaran unirAlbaranes(List<String> codigosAlbaranes, DTM dtm) throws Exception;
+	public void actualizarAlbaran(Albaran albaran) throws Exception;
+	public Factura getNuevaFactura() throws Exception;
+	public void insertarFacturaLibre(Factura factura) throws Exception;
+	public boolean updateFactura(Factura fact) throws Exception;
+	public void updateEstadoFactura(Factura factura) throws Exception;
+	public Vector<OrdersLin> getProductosPedidos(long idCliente) throws Exception;
+	public Vector<Producto> getProductosAlbaran(String idPedido) throws Exception;
+	public Vector<Producto> getProductosFactura(String idPedido) throws Exception;
+	public Vector<Factura> facturasAlbaran(String codigoAlbaran) throws Exception;
+	public void updateFechaVencimientoFactura(Factura factura) throws Exception;
+	public void dividirFacturaCuotas(Factura factura) throws Exception;
+	public Vector<EstadoPedido> getEstadosFacturas() throws Exception;
+	public Vector<TemperaturaTransporte> getTemperaturasTransporte() throws Exception;
+	public Vector<PortesTransporte> getPortesTransporte() throws Exception;
+	public Comercial getLanzaderaPedidos(long idComercial) throws Exception;
+	public Lanzadera insertaLogLanzadera(Lanzadera lanzaderaAux) throws Exception;
+}

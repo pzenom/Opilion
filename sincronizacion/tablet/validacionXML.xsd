@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:element name="opilionMobile">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="cliente" minOccurs="0" maxOccurs="unbounded" >
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="datosGenerales" minOccurs="1" maxOccurs="1" >
+                                <xsd:complexType>
+                                    <xsd:sequence>
+										<xsd:element name="id" type="xsd:string"/>
+										<xsd:element name="nombre" type="xsd:string"/>
+										<xsd:element name="apellidos" type="xsd:string"/>
+										<xsd:element name="nif" type="xsd:string"/>
+										<xsd:element name="ean" type="xsd:string"/>
+										<xsd:element name="web" type="xsd:string"/>
+										<xsd:element name="limiteCredito" type="xsd:decimal"/>
+										<xsd:element name="recargoEquivalencia" type="xsd:decimal"/>
+										<xsd:element name="dsctoMercancia" type="xsd:decimal"/>
+										<xsd:element name="dsctoValor" type="xsd:decimal"/>
+										<xsd:element name="tipoPersona" type="xsd:string"/>
+										<xsd:element name="estado" type="xsd:string"/>
+									</xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+							<xsd:element name="direcciones" minOccurs="1" maxOccurs="1" >
+                                <xsd:complexType>
+                                    <xsd:sequence>
+										<xsd:element name="direccion" minOccurs="0" maxOccurs="unbounded" >
+											<xsd:complexType>
+												<xsd:sequence>
+													<xsd:element name="idDireccion" type="xsd:string"/>
+													<xsd:element name="nombreCalle" type="xsd:string"/>
+												</xsd:sequence>
+											</xsd:complexType>
+										</xsd:element>
+									</xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+							<xsd:element name="emails" minOccurs="1" maxOccurs="1" >
+                                <xsd:complexType>
+                                    <xsd:sequence>
+										<xsd:element name="email" minOccurs="0" maxOccurs="unbounded" >
+											<xsd:complexType>
+												<xsd:sequence>
+													<xsd:element name="idEmail" type="xsd:string"/>
+													<xsd:element name="direccion" type="xsd:string"/>
+												</xsd:sequence>
+											</xsd:complexType>
+										</xsd:element>
+									</xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+							<xsd:element name="formasPago" minOccurs="1" maxOccurs="1" >
+                                <xsd:complexType>
+                                    <xsd:sequence>
+										<xsd:element name="formaDePago" minOccurs="0" maxOccurs="unbounded" >
+											<xsd:complexType>
+												<xsd:sequence>
+													<xsd:element name="idDatoBancario" type="xsd:string"/>
+													<xsd:element name="idFormaPago" type="xsd:string"/>
+													<xsd:element name="diasFormaPago" type="xsd:string"/>
+													<xsd:element name="diaPago" type="xsd:string"/>
+													<xsd:element name="idBanco" type="xsd:string"/>
+													<xsd:element name="idFormaPagoDesde" type="xsd:string"/>
+													<xsd:element name="numCuenta" type="xsd:string"/>
+												</xsd:sequence>
+											</xsd:complexType>
+										</xsd:element>
+									</xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+							<xsd:element name="roles" minOccurs="1" maxOccurs="1" >
+                                <xsd:complexType>
+                                    <xsd:sequence>
+										<xsd:element name="rol" minOccurs="0" maxOccurs="unbounded" >
+											<xsd:complexType>
+												<xsd:sequence>
+													<xsd:element name="idRol" type="xsd:string"/>
+													<xsd:element name="idTipoSector" type="xsd:string"/>
+												</xsd:sequence>
+											</xsd:complexType>
+										</xsd:element>
+									</xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+							<xsd:element name="telefonos" minOccurs="1" maxOccurs="1" >
+                                <xsd:complexType>
+                                    <xsd:sequence>
+										<xsd:element name="telefono" minOccurs="0" maxOccurs="unbounded" >
+											<xsd:complexType>
+												<xsd:sequence>
+													<xsd:element name="idTelefono" type="xsd:string"/>
+													<xsd:element name="numeroTelefono" type="xsd:string"/>
+												</xsd:sequence>
+											</xsd:complexType>
+										</xsd:element>
+									</xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+				<xsd:element name="pedido" minOccurs="0" maxOccurs="unbounded" >
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="datosGenerales" minOccurs="1" maxOccurs="1" >
+                                <xsd:complexType>
+                                    <xsd:sequence>
+										<xsd:element name="codigoPedido" type="xsd:string"/>
+										<xsd:element name="idCliente" type="xsd:string"/>
+										<xsd:element name="idFormaPago" type="xsd:string"/>
+										<xsd:element name="idDireccion" type="xsd:string"/>
+										<xsd:element name="fechaRegistro" type="xsd:string"/>
+										<xsd:element name="fechaEntrega" type="xsd:string"/>
+										<xsd:element name="fechaVencimiento" type="xsd:string"/>
+										<xsd:element name="idEstado" type="xsd:string"/>
+										<xsd:element name="observaciones" type="xsd:string"/>
+										<xsd:element name="responsable" type="xsd:string"/>
+										<xsd:element name="pendienteCobrar" type="xsd:string"/>
+									</xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+							<xsd:element name="detallesPedido" minOccurs="1" maxOccurs="1" >
+                                <xsd:complexType>
+                                    <xsd:sequence>
+										<xsd:element name="lineaPedido" minOccurs="1" maxOccurs="unbounded" >
+											<xsd:complexType>
+												<xsd:sequence>
+													<xsd:element name="idProducto" type="xsd:string"/>
+													<xsd:element name="bultos" type="xsd:string"/>
+													<xsd:element name="kilosUds" type="xsd:string"/>
+													<xsd:element name="precioUnitario" type="xsd:string"/>
+													<xsd:element name="lotesLinea" minOccurs="0" maxOccurs="unbounded" >
+														<xsd:complexType>
+															<xsd:sequence>
+																<xsd:element name="lote" type="xsd:string"/>
+																<xsd:element name="bultos" type="xsd:string"/>
+															</xsd:sequence>
+														</xsd:complexType>
+													</xsd:element>
+												</xsd:sequence>
+											</xsd:complexType>
+										</xsd:element>
+									</xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+						</xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+				<xsd:element name="albaran" minOccurs="0" maxOccurs="unbounded" >
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="datosGenerales" minOccurs="1" maxOccurs="1" >
+                                <xsd:complexType>
+                                    <xsd:sequence>
+										<xsd:element name="codigoPedido" type="xsd:string"/>
+										<xsd:element name="idCliente" type="xsd:string"/>
+										<xsd:element name="idFormaPago" type="xsd:string"/>
+										<xsd:element name="idDireccion" type="xsd:string"/>
+										<xsd:element name="fechaRegistro" type="xsd:string"/>
+										<xsd:element name="fechaEntrega" type="xsd:string"/>
+										<xsd:element name="fechaVencimiento" type="xsd:string"/>
+										<xsd:element name="idEstado" type="xsd:string"/>
+										<xsd:element name="observaciones" type="xsd:string"/>
+										<xsd:element name="responsable" type="xsd:string"/>
+										<xsd:element name="importeTotal" type="xsd:string"/>
+										<xsd:element name="pendienteCobrar" type="xsd:string"/>
+									</xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+							<xsd:element name="detallesPedido" minOccurs="1" maxOccurs="1" >
+                                <xsd:complexType>
+                                    <xsd:sequence>
+										<xsd:element name="lineaPedido" minOccurs="1" maxOccurs="unbounded" >
+											<xsd:complexType>
+												<xsd:sequence>
+													<xsd:element name="idProducto" type="xsd:string"/>
+													<xsd:element name="bultos" type="xsd:string"/>
+													<xsd:element name="kilosUds" type="xsd:string"/>
+													<xsd:element name="precioUnitario" type="xsd:string"/>
+													<xsd:element name="lotesLinea" minOccurs="0" maxOccurs="unbounded" >
+														<xsd:complexType>
+															<xsd:sequence>
+																<xsd:element name="lote" type="xsd:string"/>
+																<xsd:element name="bultos" type="xsd:string"/>
+															</xsd:sequence>
+														</xsd:complexType>
+													</xsd:element>
+												</xsd:sequence>
+											</xsd:complexType>
+										</xsd:element>
+									</xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+						</xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+				<xsd:element name="devolucion" minOccurs="0" maxOccurs="unbounded" >
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="idCliente" type="xsd:string"/>
+							<xsd:element name="idProducto" type="xsd:string"/>
+							<xsd:element name="lote" type="xsd:string"/>
+							<xsd:element name="unidades" type="xsd:string"/>
+							<xsd:element name="devolverStock" type="xsd:string"/>
+							<xsd:element name="observaciones" type="xsd:string"/>
+							<xsd:element name="responsable" type="xsd:string"/>
+							<xsd:element name="incidencia" type="xsd:string"/>
+							<xsd:element name="fechaRegistro" type="xsd:string"/>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>
